@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  root "home#index"
+  root "jobs#index"
+  get "/home", to: "home#index"
+  get "/auth/github/callback", to: "sessions#create"
+  get "/logout", to: "sessions#destroy"
 
-  get "/jobs", to: "jobs#index"
+  resources :jobs, only: [:index]
 end
