@@ -30,4 +30,4 @@ group :development, :test do
   gem "database_cleaner"
 end
 
-gem "simplecov", require: :false, group: :test
+gem "simplecov", require: false, group: :test
