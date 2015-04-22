@@ -31,6 +31,7 @@ group :development, :test do
   gem "factory_girl_rails"
   gem "database_cleaner"
   gem "shoulda-matchers"
+  gem "faker"
 end
 
 gem "simplecov", require: false, group: :test
