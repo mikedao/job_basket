@@ -1,6 +1,30 @@
 require "rails_helper"
 
 RSpec.describe Job, type: :model do
+  it "has a position" do
+    job = create(:job)
+
+    expect(job.position).to eq("Janitor")
+  end
+
+  it "has a description" do
+    job = create(:job)
+
+    expect(job.description.class).to eq(String)
+  end
+
+  it "has a location" do
+    job = create(:job)
+
+    expect(job.description).to eq("Clean stuff")
+  end
+
+  it "has an associated company" do
+    job = create(:job)
+
+    expect(job.company.name).to eq("PHP Worldwide")
+  end
+
   describe "validations" do
     it { should belong_to(:company) }
     it { should validate_presence_of(:position) }
