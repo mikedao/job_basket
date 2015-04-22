@@ -14,7 +14,7 @@ OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(
     name: "bob",
     image: "bob.com",
   },
-  "credentials" => { token: "more stuff"}
+  "credentials" => { token: "more stuff" }
 )
 
 RSpec.configure do |config|
