@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-require 'rails_helper'
-=======
 require "rails_helper"
->>>>>>> master
 
 # Specs in this file have access to a helper object that includes
 # the JobsHelper. For example:

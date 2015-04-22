@@ -13,9 +13,6 @@
  *= require_tree .
  *= require_self
  */
-<<<<<<< HEAD
- 
-=======
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
@@ -169,4 +166,3 @@
          margin-right: 0
      }
  }
->>>>>>> master
