@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Api::JobsController, type: :controller do
+RSpec.describe Api::V1::JobsController, type: :controller do
   describe "POST#create" do
     it "can create a new job with no company or date" do
       job = {

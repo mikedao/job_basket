@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :jobs, only: [:index]
 
   namespace :api do
-    post "/jobs", to: "jobs#create"
+    namespace :v1 do
+      post "/jobs", to: "jobs#create"
+    end
   end
 end

@@ -1,4 +1,4 @@
-class Api::JobsController < ApplicationController
+class Api::V1::JobsController < ApplicationController
   def create
     job = Job.where(job_params).first_or_initialize
     if !job.new_record?
