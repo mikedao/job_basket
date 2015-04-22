@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe Company, type: :model do
   describe "validations" do
     it "should validate presence of name" do
-      company  = build(:company)
+      company = build(:company)
       company2 = build(:company, name: nil)
 
       expect(company).to be_valid
