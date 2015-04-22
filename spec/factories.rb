@@ -4,5 +4,13 @@ FactoryGirl.define do
     posting_date Time.now
     description "Clean stuff"
     location "Denver, CO"
+    source "GitHub"
+    before(:create) do |job|
+      job.company = create(:company)
+    end
+  end
+
+  factory :company do
+    name "PHP Worldwide"
   end
 end
