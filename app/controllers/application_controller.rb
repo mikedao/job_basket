@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
+  def disable_nav
+    @disable_nav = true
+  end
+
   def authorize!
     redirect_to root_path unless current_user
   end
