@@ -13,7 +13,7 @@ class Api::JobsController < ApplicationController
   private
 
   def job_params
-    params.require(:job)
-      .permit(:position, :description, :posting_date, :source, :location)
+    params.require(:job).
+      permit(:position, :description, :posting_date, :source, :location)
   end
 end
