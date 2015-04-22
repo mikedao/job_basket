@@ -1,9 +1,9 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe HomeController, type: :controller do
-  describe 'the landing page' do
+  describe "the landing page" do
     before do
-      visit '/'
+      visit "/"
     end
 
     it "visits the landing page" do
