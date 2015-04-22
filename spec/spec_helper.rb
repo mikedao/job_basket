@@ -5,6 +5,18 @@ require "rails_helper"
 require "factory_girl_rails"
 require "support/factory_girl"
 
+OmniAuth.config.test_mode = true
+
+OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(
+  uid: "12354",
+  "info" => {
+    email: "bob@example.com",
+    name: "bob",
+    image: "bob.com",
+  },
+  "credentials" => { token: "more stuff" }
+)
+
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
