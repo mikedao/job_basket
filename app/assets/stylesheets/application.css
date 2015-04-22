@@ -59,11 +59,12 @@
  }
 
  body {
-     font-family: "aktiv-grotesk-std", sans-serif;
-     font-size: 14px;
-     font-weight: 300;
-     color: #323232;
-     -webkit-text-size-adjust: none
+    background-color: #262626;
+    font-family: "aktiv-grotesk-std", sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: #323232;
+    -webkit-text-size-adjust: none
  }
 
  .mod-footer {
