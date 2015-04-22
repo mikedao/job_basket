@@ -8,17 +8,13 @@ require "support/factory_girl"
 OmniAuth.config.test_mode = true
 
 OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(
-  provider: "github",
-  uid: "123545",
-  user => {
-  :email: "bob",
-  :name: "bob",
-  :first_name: "bob",
-  :profile_image_url: "bob.com"
+  uid: "12354",
+  "info" => {
+    email: "bob@example.com",
+    name: "bob",
+    image: "bob.com",
   },
-  :credentials => {
-    token: "111"
-  }
+  "credentials" => { token: "more stuff"}
 )
 
 RSpec.configure do |config|

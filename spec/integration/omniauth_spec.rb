@@ -8,7 +8,7 @@ describe "a user login", type: :feature do
 
     click_link_or_button("Login")
 
-    expect(User.last.uid).to eq("123545")
-    expect(current_path).to eq(root_path)
+    expect(User.last.uid).to eq("12354")
+    expect(current_path).to eq(jobs_path)
   end
 end

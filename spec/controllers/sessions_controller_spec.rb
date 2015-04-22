@@ -21,7 +21,7 @@ RSpec.describe SessionsController do
 
     it "should redirect the user to the root url" do
       post :create, provider: :github
-      expect(response).to redirect_to(root_path)
+      expect(response).to redirect_to(jobs_path)
     end
   end
 
