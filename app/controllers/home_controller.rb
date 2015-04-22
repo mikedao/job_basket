@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  layout "landing_layout"
+  before_filter :disable_nav
 
   def index
   end
