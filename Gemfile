@@ -28,6 +28,7 @@ group :development, :test do
   gem "launchy"
   gem "factory_girl_rails"
   gem "database_cleaner"
+  gem "shoulda-matchers"
 end
 
 gem "simplecov", require: false, group: :test
