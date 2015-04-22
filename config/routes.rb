@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  root "home#index"
-
-  get "/jobs", to: "jobs#index"
+  root 'home#index'
+  resources :jobs
 end

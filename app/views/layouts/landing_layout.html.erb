@@ -7,9 +7,11 @@
   <%= csrf_meta_tags %>
   <link rel="shortcut icon" href="assets/favicon.ico"/>
 </head>
+<style>
+  body {background-color:#262626}
+</style>
 <body>
   <%= yield %>
   <%= render '/layouts/footer' %>
-
 </body>
 </html>
