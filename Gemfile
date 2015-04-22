@@ -26,6 +26,9 @@ group :development, :test do
   gem "better_errors"
   gem "capybara"
   gem "launchy"
+  gem "factory_girl_rails"
+  gem "database_cleaner"
+  gem "shoulda-matchers"
 end
 
 gem "simplecov", require: false, group: :test
