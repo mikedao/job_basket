@@ -75,7 +75,8 @@
  }
 
  .mod-header {
-     min-height: 143px;
+     padding-left: 33px;
+     min-height: 110px;
      padding-top: 30px;
      font-size: 12px;
      font-weight: 700;
