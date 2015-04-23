@@ -15,4 +15,12 @@ FactoryGirl.define do
     location "Denver, CO"
     url "http://phprules.com"
   end
+
+  factory :user do
+    uid "12345"
+    username "turingstudent"
+    email "turingstudent@turing.io"
+    profile_image_url "nowhere@example.com"
+    token "faketoken"
+  end
 end

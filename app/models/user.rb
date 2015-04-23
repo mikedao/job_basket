@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   has_many :userjobs
   has_many :jobs, through: :userjobs
 
+  validates :email, :username, presence: true
+
   def self.find_or_create_from_auth(auth)
     user = User.find_or_create_by(uid: auth.uid)
     user.email = auth.info.email
