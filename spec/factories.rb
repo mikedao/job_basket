@@ -23,4 +23,8 @@ FactoryGirl.define do
     profile_image_url "nowhere@example.com"
     token "faketoken"
   end
+
+  factory :tag do
+    name "Ruby"
+  end
 end
