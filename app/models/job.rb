@@ -1,5 +1,7 @@
 class Job < ActiveRecord::Base
   belongs_to :company
+  has_many :userjobs
+  has_many :users, through: :userjobs
 
   validates :position, :description, :source, presence: true
 
