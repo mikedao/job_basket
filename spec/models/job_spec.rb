@@ -22,7 +22,7 @@ RSpec.describe Job, type: :model do
   it "has an associated company" do
     job = create(:job)
 
-    expect(job.company.name).to eq("PHP Worldwide")
+    expect(job.company.name).to eq("Twitter")
   end
 
   it "is not relevant by default" do

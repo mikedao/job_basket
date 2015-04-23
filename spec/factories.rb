@@ -11,7 +11,7 @@ FactoryGirl.define do
   end
 
   factory :company do
-    name "PHP Worldwide"
+    name "Twitter"
     location "Denver, CO"
     url "http://phprules.com"
   end
