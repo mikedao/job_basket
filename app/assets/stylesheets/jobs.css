@@ -1,0 +1,24 @@
+.jobs {
+  float: right;
+  width: 80%;
+}
+
+table {
+  width: 100%;
+}
+
+.index-job {
+  width: 100%;
+  border: solid;
+  border-color: black;
+  border-width: 1px;
+}
+
+.index-job:hover {
+  background-color: #BDC3C7;
+}
+
+.index-job-detail {
+  padding-left: 10px;
+  padding-right: 10px;
+}
