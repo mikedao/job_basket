@@ -5,11 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-20.times do
+30.times do
   Job.create(
               position: Faker::Name.title,
               posting_date: rand(1...10).days.ago,
-              description: Faker::Lorem.sentence(3),
+              description: Faker::Lorem.paragraphs(3),
               location: "#{Faker::Address.city}, #{Faker::Address.state}",
               company_id: rand(1...10),
               source: Faker::Name.name
@@ -26,9 +26,9 @@ puts "Jobs Created"
 end
 puts "Companies Created"
 
-20.times do
+30.times do
   Tag.create(
-             name: Faker::Hacker.adjective,
+             name: "#{Faker::Hacker.adjective} #{Faker::Hacker.adjective}",
             )
 end
 puts "Tags Created"

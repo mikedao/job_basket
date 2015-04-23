@@ -3,12 +3,12 @@
   <div class="col-md-2">
   </div>
   <div class="col-md-8 job">
-    <h2 class="job-position"><%= Job.first.position%></h2>
-    <h4>Posting Date: <%= time_tag(Job.first.posting_date) %><h4>
-    <p><a href="#" id="company-link">Ice Breakers</a> <%= Job.first.location %></p>
+    <h2 class="job-position"><%= @job.position%></h2>
+    <h4>Posting Date: <%= time_tag(@job.posting_date) %><h4>
+    <p><a href="#" id="company-link"><%= @job.company.name %></a> <%= @job.location %></p>
     <div class="job-description">
       <h3 class="job-description-header">Job Description</h3>
-      <p><%= Job.first.description %></p>
+      <p><%= @job.description %></p>
     </div>
   </div>
   <div class="col-md-2">
