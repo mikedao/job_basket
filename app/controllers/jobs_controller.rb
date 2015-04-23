@@ -4,4 +4,7 @@ class JobsController < ApplicationController
   def index
     @jobs = Job.order(posting_date: :desc)
   end
+
+  def show
+  end
 end
