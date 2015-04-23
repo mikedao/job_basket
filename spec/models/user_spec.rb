@@ -29,7 +29,8 @@ RSpec.describe User, type: :model do
   end
 
   describe "validations" do
-    it { should have_many(:jobs) }
+    it { should have_many(:jobsliked) }
+    it { should have_many(:jobshidden) }
     it { should validate_presence_of(:email) }
     it { should validate_presence_of(:username) }
   end
