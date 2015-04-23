@@ -1,0 +1,24 @@
+.job p {
+  font-size: 14px;
+}
+
+.job {
+  font-family: "aktiv-grotesk-std", sans-serif;
+  color: #000;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.job-description-header {
+  font-family: "aktiv-grotesk-std", sans-serif;
+  color: #05c2d1;
+}
+
+.job-position {
+  color: #05c2d1;
+}
+
+#company-link {
+padding: 2px;
+}
