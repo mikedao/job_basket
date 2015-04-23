@@ -1,6 +1,10 @@
-<div class="job">
-  <%= Job.first.position%>
+<div class=col-md-2">
+</div>
+<div class="col-md-8 job">
+  <h1><%= Job.first.position%></h1>
   <%= time_tag(Job.first.posting_date) %>
-  <%= Job.first.description %>
+  <p><%= Job.first.description %></p>
   <%= Job.first.location %>
+</div>
+<div class=col-md-2">
 </div>
