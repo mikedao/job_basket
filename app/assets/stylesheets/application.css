@@ -198,3 +198,9 @@
 #filter-title {
     color: #05c2d1;
 }
+
+.nav-image {
+  float: left;
+  margin-top: 2%;
+  margin-left: 46%;
+}

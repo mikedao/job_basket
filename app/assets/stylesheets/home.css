@@ -21,6 +21,11 @@
   font-size: 150px;
   color: white;
 }
+
+.landing-title:hover {
+  color: #05c2d1;
+}
+
 a {
   text-decoration: none;
 }
