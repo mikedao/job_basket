@@ -37,6 +37,7 @@ RSpec.describe Job, type: :model do
     it { should validate_presence_of(:position) }
     it { should validate_presence_of(:description) }
     it { should validate_presence_of(:source) }
+    it { should have_many(:tags) }
   end
 
   describe "posting_date default" do
