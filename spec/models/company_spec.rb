@@ -28,7 +28,7 @@ RSpec.describe Company, type: :model do
     end
   end
   it "populates company data on create" do
-    company = create(:company, name: "Twitter")
+    company = Company.create(name: "Twitter")
 
     expect(company.ceo_name.class).to eq(String)
   end
