@@ -33,10 +33,10 @@ puts "Companies Created"
 end
 puts "Tags Created"
 
-20.times do |i|
+20.times do
   Jobtag.create(
-    tag_id: rand(2..15),
-    job_id: rand(2..15)
+    tag_id: rand(1..10),
+    job_id: rand(1..10)
   )
 end
 puts "JobTags Created"
