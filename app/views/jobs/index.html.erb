@@ -1,1 +1,55 @@
-<h1>Hello World</h1>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<div class="container">
+  <div id="sidebar">
+    <div class="sidebar-content">
+      <ul>
+        <li><a href="#"><h4>Relevant Jobs</h4></a></li>
+        <li><a href="#"><h4>My Jobs</h4></a></li>
+        <li><a href="#"><h4>All Jobs</h4></a></li>
+        <br><br>
+        <li id="filter-title"><h4>Filter By</h4></li>
+      </ul>
+      <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
+              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                City
+              </a>
+            </h4>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+              <% 10.times do %>
+                <label>
+                  <input type="checkbox" value="id"/>
+                  <%= Faker::Address.city %>
+                </label><br>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Tags
+              </a>
+            </h4>
+          </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="panel-body">
+              <% 10.times do %>
+                <label>
+                  <input type="checkbox" value="id"/>
+                  <%= Faker::Hacker.adjective %>
+                </label><br>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
