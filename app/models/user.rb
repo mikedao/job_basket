@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-  has_many :userjobs
-  has_many :jobs, through: :userjobs
+  has_many :likedjobs
+  has_many :jobs, through: :likedjobs
 
   validates :email, :username, presence: true
 

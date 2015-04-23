@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150422234627) do
+ActiveRecord::Schema.define(version: 20150423144958) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,21 +56,21 @@ ActiveRecord::Schema.define(version: 20150422234627) do
   add_index "jobtags", ["job_id"], name: "index_jobtags_on_job_id", using: :btree
   add_index "jobtags", ["tag_id"], name: "index_jobtags_on_tag_id", using: :btree
 
-  create_table "tags", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "userjobs", force: :cascade do |t|
+  create_table "likedjobs", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "job_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "userjobs", ["job_id"], name: "index_userjobs_on_job_id", using: :btree
-  add_index "userjobs", ["user_id"], name: "index_userjobs_on_user_id", using: :btree
+  add_index "likedjobs", ["job_id"], name: "index_likedjobs_on_job_id", using: :btree
+  add_index "likedjobs", ["user_id"], name: "index_likedjobs_on_user_id", using: :btree
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
@@ -86,6 +86,6 @@ ActiveRecord::Schema.define(version: 20150422234627) do
   add_foreign_key "hiddenjobs", "users"
   add_foreign_key "jobtags", "jobs"
   add_foreign_key "jobtags", "tags"
-  add_foreign_key "userjobs", "jobs"
-  add_foreign_key "userjobs", "users"
+  add_foreign_key "likedjobs", "jobs"
+  add_foreign_key "likedjobs", "users"
 end
