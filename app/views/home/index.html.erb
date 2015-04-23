@@ -3,11 +3,19 @@
     <h1>Job Basket</h1>
   </div>
   <div class="turing-image">
-    <%= image_tag('turing-logo.png', width: '15%', height: '15%') %>
+    <%= image_tag('turing-logo-copy.png', width: '15%', height: '15%') %>
   </div>
-  <%= link_to "/auth/github" do %>
-  <div class="login-button">
-    LOGIN
-  </div>
+  <% if current_user.nil? %>
+    <%= link_to "/auth/github" do %>
+      <div class="login-button">
+        LOGIN
+      </div>
+    <% end %>
+  <% else %>
+    <%= link_to jobs_path do %>
+      <div class="login-button">
+        JOBS
+      </div>
+    <% end %>
   <% end %>
 </div>
