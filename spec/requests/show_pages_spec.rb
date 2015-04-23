@@ -11,7 +11,7 @@ RSpec.describe "ShowPages", type: :request do
       job = create(:job)
       visit job_path(job)
       expect(page).to have_content(job.position)
-      #expect(page).to have_content("Wed, 22 Apr 2015")
+      expect(page).to have_content("April 23, 2015")
       expect(page).to have_content(job.description)
       expect(page).to have_content(job.location)
     end
