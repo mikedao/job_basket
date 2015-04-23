@@ -33,11 +33,12 @@ RSpec.describe Job, type: :model do
 
   describe "validations" do
     it { should belong_to(:company) }
-    it { should have_many(:users) }
+    it { should have_many(:likes) }
     it { should validate_presence_of(:position) }
     it { should validate_presence_of(:description) }
     it { should validate_presence_of(:source) }
     it { should have_many(:tags) }
+    it { should have_many(:hiddenjobs) }
   end
 
   describe "posting_date default" do
