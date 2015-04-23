@@ -2,7 +2,7 @@ class GlassdoorService
   attr_reader :connection
 
   def initialize
-     @connection = Faraday.new(url: "http://api.glassdoor.com/api")
+    @connection = Faraday.new(url: "http://api.glassdoor.com/api")
   end
 
   def company(company_name)

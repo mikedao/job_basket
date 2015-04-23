@@ -13,6 +13,5 @@ class AddColumnsToCompanies < ActiveRecord::Migration
     add_column :companies, :ceo_name, :string
     add_column :companies, :ceo_picture, :string
     add_column :companies, :approval_rating, :integer
-
   end
 end
