@@ -25,8 +25,15 @@ RSpec.describe Job, type: :model do
     expect(job.company.name).to eq("PHP Worldwide")
   end
 
+  it "is not relevant by default" do
+    job = create(:job)
+
+    expect(job.relevant).to be_falsey
+  end
+
   describe "validations" do
     it { should belong_to(:company) }
+    it { should have_many(:users) }
     it { should validate_presence_of(:position) }
     it { should validate_presence_of(:description) }
     it { should validate_presence_of(:source) }
