@@ -35,8 +35,8 @@ puts "Tags Created"
 
 100.times do
   Jobtag.create(
-                tag_id: rand(1...20),
-                job_id: rand(1...20)
+                tag_id: rand(1..20),
+                job_id: rand(1..20)
                )
 end
 puts "JobTags Created"
