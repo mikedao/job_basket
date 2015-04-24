@@ -1,12 +1,3 @@
-Jobtag.destroy_all
-ActiveRecord::Base.connection.reset_pk_sequence!("jobtags")
-Tag.destroy_all
-ActiveRecord::Base.connection.reset_pk_sequence!("tags")
-Job.destroy_all
-ActiveRecord::Base.connection.reset_pk_sequence!("jobs")
-Company.destroy_all
-ActiveRecord::Base.connection.reset_pk_sequence!("companies")
-
 30.times do
   Job.create(
     position: Faker::Name.title,
