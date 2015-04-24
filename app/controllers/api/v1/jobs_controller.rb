@@ -1,4 +1,6 @@
 class Api::V1::JobsController < ApplicationController
+  skip_before_filter :verify_authenticity_token
+
   def create
     job = Job.where(job_params).first_or_initialize
     if !job.new_record?
@@ -13,7 +15,7 @@ class Api::V1::JobsController < ApplicationController
   private
 
   def job_params
-    params.require(:job).
-      permit(:position, :description, :posting_date, :source, :location)
+    params.require(:job).permit(:position, :description, :posting_date,
+                                :source, :location)
   end
 end
