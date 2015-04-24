@@ -57,6 +57,7 @@
  }
 
  body {
+    padding-top: 140px;
     background-color: #262626;
     font-family: "aktiv-grotesk-std", sans-serif;
     font-size: 14px;
@@ -66,18 +67,22 @@
  }
 
  .mod-footer {
-     padding: 0px 0 5px;
+     padding-top: 10px;
      font-size: 12px;
      text-align: center;
      color: #666;
      clear: both;
      position:absolute;
      bottom:0;
+     background-color: #262626;
      width:100%;
  }
 
  .mod-header {
-     min-height: 110px;
+     position: fixed;
+     top: 0;
+     width: 100%;
+     height: 20%;
      padding-top: 10px;
      padding-bottom: 20px;
      font-size: 12px;
@@ -85,7 +90,8 @@
      text-transform: uppercase;
      color: #fff;
      background: #262626;
-     border-bottom: solid 4px #05c2d1
+     border-bottom: solid 4px #05c2d1;
+     margin-bottom: 20px;
  }
 
  .index .mod-header {
@@ -168,12 +174,12 @@
      }
  }
 
-
 #sidebar {
-    position:absolute;
+    position:fixed;
     left:0;
     width:20%;
     height:80%;
+    clear:both;
     background:#F3F3F3;
 }
 

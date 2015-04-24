@@ -11,7 +11,6 @@ RSpec.describe GlassdoorService do
     service = GlassdoorService.new
 
     result = service.company("Twitter")
-
     expect(result["ceo"]["name"].class).to eq(String)
   end
 end
