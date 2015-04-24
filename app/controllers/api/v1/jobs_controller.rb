@@ -1,5 +1,5 @@
 class Api::V1::JobsController < ApplicationController
-  skip_before_filter  :verify_authenticity_token
+  skip_before_filter :verify_authenticity_token
 
   def create
     job = Job.where(job_params).first_or_initialize
