@@ -12,6 +12,12 @@ class Api::V1::JobsController < ApplicationController
     end
   end
 
+  def show
+    job = Job.find(params[:id])
+
+    render json: job, serializer: JobSerializer
+  end
+
   private
 
   def job_params
