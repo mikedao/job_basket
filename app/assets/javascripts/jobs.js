@@ -17,10 +17,10 @@ function likeJob(id, button) {
       alert("it failed");
     }
   });
-};
+}
 
 function addedToJobs(button) {
   var buttons = $(button).parent("div");
-  buttons.parent("td").append("<h5 style='color: #2ECC71;'>Added to My Jobs</h5>");
+  buttons.parent("td").append("<h5 class='added-job'>Added to My Jobs</h5>");
   buttons.remove();
-};
+}
