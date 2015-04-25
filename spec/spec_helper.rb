@@ -1,6 +1,7 @@
 require "simplecov"
 SimpleCov.start
 require "capybara/rspec"
+require "capybara/poltergeist"
 require "rails_helper"
 require "factory_girl_rails"
 require "support/factory_girl"
@@ -42,3 +43,5 @@ RSpec.configure do |config|
     end
   end
 end
+
+Capybara.javascript_driver = :poltergeist
