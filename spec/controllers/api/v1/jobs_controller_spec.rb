@@ -82,7 +82,7 @@ RSpec.describe Api::V1::JobsController, type: :controller do
   describe "#GET index" do
     before(:all) do
       @jobs = []
-      5.times { |i| @jobs << create(:job, position: "Job #{ i * 6 }" ) }
+      5.times { |i| @jobs << create(:job, position: "Job #{ i * 6 }") }
     end
 
     it "#GET api/v1/jobs" do

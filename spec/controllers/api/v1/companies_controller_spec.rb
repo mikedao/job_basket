@@ -13,4 +13,19 @@ RSpec.describe Api::V1::CompaniesController, type: :controller do
       expect(result["company"]["name"]).to eq("Twitter")
     end
   end
+
+  describe "#GET index" do
+    before(:all) do
+      3.times { create(:company) }
+    end
+
+    it "#GET api/v1/companies" do
+      get :index
+      result = JSON.parse(response.body)["companies"]
+
+      expect(response.status).to eq(200)
+      expect(result.count).to eq(3)
+      expect(result).to have_content("Twitter")
+    end
+  end
 end

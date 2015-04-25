@@ -4,4 +4,10 @@ class Api::V1::CompaniesController < ApplicationController
 
     render json: company, serializer: CompanySerializer
   end
+
+  def index
+    companies = Company.all
+
+    render json: companies, each_serializer: CompanySerializer
+  end
 end
