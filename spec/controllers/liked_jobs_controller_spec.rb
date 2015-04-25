@@ -9,7 +9,7 @@ RSpec.describe LikedJobsController, type: :controller do
 
   describe "#create" do
     it "associates a user and a job" do
-      @job = Job.create(position: "web dev", source: "glassdoor", description: "some cool job")
+      @job = create(:job)
       post :create, id: @job.id
 
       expect(@user.jobsliked.first).to eq(@job)
