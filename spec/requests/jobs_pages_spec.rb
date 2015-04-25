@@ -9,10 +9,17 @@ RSpec.describe "JobsPages", type: :request do
     end
 
     it "User can like a job" do
-      create(:job)
+      @job = create(:job)
       visit jobs_path
       first(:button, "Like").click
       expect(@user.jobsliked.first).to eq(@job)
+    end
+
+    it "User can dislike a job" do
+      @job = create(:job)
+      visit jobs_path
+      first(:button, "Remove").click
+      expect(@user.jobshidden.first).to eq(@job)
     end
   end
 end

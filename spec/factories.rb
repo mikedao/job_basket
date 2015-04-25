@@ -20,7 +20,7 @@ FactoryGirl.define do
     uid "12345"
     username "turingstudent"
     email "turingstudent@turing.io"
-    profile_image_url "nowhere@example.com"
+    profile_image_url "https://avatars.githubusercontent.com/u/8440504?v=3"
     token "faketoken"
   end
 
