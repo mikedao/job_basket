@@ -14,13 +14,13 @@ function likeJob(id, button) {
       addedToJobs(button);
     },
     error: function() {
-      alert("it failed");
+      alert("Job could not be added at this time");
     }
   });
-};
+}
 
 function addedToJobs(button) {
   var buttons = $(button).parent("div");
-  buttons.parent("td").append("<h5 style='color: #2ECC71;'>Added to My Jobs</h5>");
+  buttons.parent("td").append("<h5 class='added-job'>Added to My Jobs</h5>");
   buttons.remove();
-};
+}

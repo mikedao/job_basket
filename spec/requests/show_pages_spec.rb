@@ -5,7 +5,7 @@ RSpec.describe "ShowPages", type: :request do
     before do
       @user = create(:user)
       allow_any_instance_of(ApplicationController)
-      .to receive(:current_user).and_return(@user)
+        .to receive(:current_user).and_return(@user)
     end
 
     it "has a single job with associated info" do
