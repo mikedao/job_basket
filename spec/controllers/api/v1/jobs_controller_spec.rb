@@ -78,4 +78,20 @@ RSpec.describe Api::V1::JobsController, type: :controller do
       expect(JSON.parse(response.body)["job"]["position"]).to eq("Janitor")
     end
   end
+
+  describe "#GET index" do
+    before(:all) do
+      @jobs = []
+      5.times { |i| @jobs << create(:job, position: "Job #{ i * 6 }" ) }
+    end
+
+    it "#GET api/v1/jobs" do
+      get :index
+      results = JSON.parse(response.body)["jobs"]
+
+      expect(response.status).to eq(200)
+      expect(results.count).to eq(5)
+      expect(results).to have_content("Job 24")
+    end
+  end
 end
