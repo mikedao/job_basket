@@ -16,7 +16,7 @@ gem "sdoc", "~> 0.4.0", group: :doc
 gem "awesome_print"
 gem "quiet_assets", group: :development
 gem "sprockets", "2.11.0"
-gem "active_model_serializers"
+gem "active_model_serializers", "~> 0.9.0"
 
 group :development, :test do
   gem "byebug"
