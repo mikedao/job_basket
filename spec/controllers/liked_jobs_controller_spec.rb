@@ -4,7 +4,7 @@ RSpec.describe LikedJobsController, type: :controller do
   before do
     @user = create(:user)
     allow_any_instance_of(ApplicationController)
-                         .to receive(:current_user).and_return(@user)
+      .to receive(:current_user).and_return(@user)
   end
 
   describe "#create" do
