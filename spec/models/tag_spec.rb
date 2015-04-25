@@ -12,7 +12,7 @@ RSpec.describe Tag, type: :model do
     it "should have a name" do
       tag = create(:tag)
 
-      expect(tag.name).to eq("Ruby")
+      expect(tag.name).to match("Ruby")
     end
   end
 end

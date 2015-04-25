@@ -18,6 +18,12 @@ class Api::V1::JobsController < ApplicationController
     render json: job, serializer: JobSerializer
   end
 
+  def index
+    jobs = Job.all
+
+    render json: jobs, each_serializer: JobSerializer
+  end
+
   private
 
   def job_params

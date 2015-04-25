@@ -11,7 +11,7 @@ RSpec.describe Api::V1::JobsController, type: :controller do
       }
       post :create, job: job
 
-      new_job = JSON.parse(response.body)
+      new_job = JSON.parse(response.body)["job"]
 
       expect(response.status).to eq(201)
       expect(new_job["position"]).to eq("PHP Dev")
@@ -67,15 +67,42 @@ RSpec.describe Api::V1::JobsController, type: :controller do
     end
   end
 
-  describe "#GET show" do
-    let(:job) { create(:job) }
-
-    it "#GET api/v1/jobs/:id" do
-      get :show, id: job.id
+  context "job not yet created" do
+    it "#GET api/v1/jobs" do
+      get :index
 
       expect(response.status).to eq(200)
-      expect(JSON.parse(response.body)["job"]["id"]).to eq(job.id)
-      expect(JSON.parse(response.body)["job"]["position"]).to eq("Janitor")
+      expect(JSON.parse(response.body)["jobs"]).to be_empty
+    end
+  end
+
+  context "existing job" do
+    describe "#GET show" do
+      let(:job) { create(:job) }
+
+      it "#GET api/v1/jobs/:id" do
+        get :show, id: job.id
+
+        expect(response.status).to eq(200)
+        expect(JSON.parse(response.body)["job"]["id"]).to eq(job.id)
+        expect(JSON.parse(response.body)["job"]["position"]).to eq("Janitor")
+      end
+    end
+
+    describe "#GET index" do
+      before(:all) do
+        @jobs = []
+        5.times { |i| @jobs << create(:job, position: "Job #{ i * 6 }") }
+      end
+
+      it "#GET api/v1/jobs" do
+        get :index
+        results = JSON.parse(response.body)["jobs"]
+
+        expect(response.status).to eq(200)
+        expect(results.count).to eq(5)
+        expect(results).to have_content("Job 24")
+      end
     end
   end
 end
