@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       post "/jobs", to: "jobs#create"
+      resources :jobs, only: [:show, :index]
     end
   end
 end
