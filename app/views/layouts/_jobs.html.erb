@@ -1,18 +1,24 @@
-<table>
+<table class="jobs-table">
   <% @jobs.each do |job| %>
     <tr class="index-job">
-        <td class="index-job-detail">
-          <h5><strong><%= link_to job.position, "" %></strong></h5>
-        </td>
-        <td class="index-job-detail">
-          <h5><%= job.company.name %></h5>
-        </td>
-        <td class="index-job-detail">
-          <h5><%= job.location %></h5>
-        </td>
-        <td class="index-job-detail">
-          <h5><%= job.posting_date.strftime("%m/%d") %></h5>
-        </td>
-      <% end %>
+      <td class="index-job-detail">
+        <h5><strong><%= link_to job.position, "" %></strong></h5>
+      </td>
+      <td class="index-job-detail">
+        <h5><%= job.company.name %></h5>
+      </td>
+      <td class="index-job-detail">
+        <h5><%= job.location %></h5>
+      </td>
+      <td class="index-job-detail">
+        <h5><%= job.posting_date.strftime("%m/%d") %></h5>
+      </td>
+      <td>
+        <div class="btn-group btn-group-sm" role="group">
+          <button class="btn btn-success">Interested</button>
+          <button class="btn btn-danger">Not Interested</button>
+        </div>
+      </td>
+    <% end %>
   </tr>
 </table>
