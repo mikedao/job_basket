@@ -25,6 +25,6 @@ FactoryGirl.define do
   end
 
   factory :tag do
-    name "Ruby"
+    sequence(:name) { |i| "Ruby #{i}.0" }
   end
 end

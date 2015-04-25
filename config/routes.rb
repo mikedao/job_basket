@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       post "/jobs", to: "jobs#create"
       resources :jobs, only: [:show, :index]
       resources :companies, only: [:show, :index]
+      resources :tags, only: [:index]
     end
   end
 end
