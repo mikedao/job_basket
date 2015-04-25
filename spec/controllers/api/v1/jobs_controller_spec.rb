@@ -29,7 +29,7 @@ RSpec.describe Api::V1::JobsController, type: :controller do
       }
       post :create, job: job
 
-      new_job = JSON.parse(response.body)
+      new_job = JSON.parse(response.body)["job"]
 
       expect(response.status).to eq(201)
       expect(new_job["position"]).to eq("PHP Dev")
@@ -50,7 +50,7 @@ RSpec.describe Api::V1::JobsController, type: :controller do
       }
       post :create, job: dup_job
 
-      new_job = JSON.parse(response.body)
+      new_job = JSON.parse(response.body)["job"]
 
       expect(response.status).to eq(302)
       expect(new_job["position"]).to eq("PHP Dev")
@@ -64,6 +64,18 @@ RSpec.describe Api::V1::JobsController, type: :controller do
       post :create, job: job
 
       expect(response.status).to eq(422)
+    end
+  end
+
+  describe "#GET show" do
+    let(:job) { create(:job) }
+
+    it "#GET api/v1/jobs/:id" do
+      get :show, id: job.id
+
+      expect(response.status).to eq(200)
+      expect(JSON.parse(response.body)["job"]["id"]).to eq(job.id)
+      expect(JSON.parse(response.body)["job"]["position"]).to eq("Janitor")
     end
   end
 end
