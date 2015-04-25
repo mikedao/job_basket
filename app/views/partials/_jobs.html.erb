@@ -1,6 +1,6 @@
 <table class="jobs-table">
   <% @jobs.each do |job| %>
-    <tr class="index-job">
+    <tr class="index-job" id="<%= job.id %>">
       <td class="index-job-detail">
         <h5><strong><%= link_to job.position, "" %></strong></h5>
       </td>
@@ -13,12 +13,18 @@
       <td class="index-job-detail">
         <h5><%= job.posting_date.strftime("%m/%d") %></h5>
       </td>
-      <td>
+      <% if current_user.jobsliked.include?(job) %>
+      <td class="index-job-detail">
+        <h5 style="color: #2ECC71;">Added to My Jobs</h5>
+      </td>
+      <% else %>
+      <td class="index-job-detail">
         <div class="btn-group btn-group-sm" role="group">
           <button id="like" class="btn btn-success"><i class="fa fa-star fa-lg"></i> Like</button>
           <button class="btn btn-danger"><i class="fa fa-trash-o fa-lg"></i></button>
         </div>
       </td>
+      <% end %>
     <% end %>
   </tr>
 </table>

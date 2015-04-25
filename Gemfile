@@ -31,6 +31,7 @@ group :development, :test do
   gem "database_cleaner"
   gem "shoulda-matchers"
   gem "faker"
+  gem "poltergeist"
 end
 
 gem "simplecov", require: false, group: :test

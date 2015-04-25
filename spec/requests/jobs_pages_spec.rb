@@ -5,14 +5,14 @@ RSpec.describe "JobsPages", type: :request do
     before do
       @user = create(:user)
       allow_any_instance_of(ApplicationController)
-      .to receive(:current_user).and_return(@user)
-      @job = create(:job)
+        .to receive(:current_user).and_return(@user)
     end
 
     it "User can like a job" do
+      create(:job)
       visit jobs_path
-     click_button("Like")
-     expect(@user.jobsliked.first).to eq(@job)
+      click_button("Like")
+      expect(@user.jobsliked.first).to eq(@job)
     end
   end
 end
