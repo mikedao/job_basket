@@ -7,5 +7,7 @@ class JobsController < ApplicationController
 
   def show
     @job = Job.find(params[:id])
+    @job_description =
+      @job.description.gsub("]", "").gsub("[", "").gsub("\"", "").gsub(",", "")
   end
 end
