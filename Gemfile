@@ -15,7 +15,8 @@ gem "jbuilder", "~> 2.0"
 gem "sdoc", "~> 0.4.0", group: :doc
 gem "awesome_print"
 gem "quiet_assets", group: :development
-gem 'sprockets', '2.11.0'
+gem "sprockets", "2.11.0"
+gem "active_model_serializers"
 
 group :development, :test do
   gem "byebug"
