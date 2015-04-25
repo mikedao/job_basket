@@ -14,7 +14,7 @@ function likeJob(id, button) {
       addedToJobs(button);
     },
     error: function() {
-      alert("it failed");
+      alert("Job could not be added at this time");
     }
   });
 }
