@@ -2,13 +2,22 @@ require "rails_helper"
 
 RSpec.describe Api::V1::JobsController, type: :controller do
   describe "POST#create" do
-    it "can create a new job with no company or date" do
-      job = {
+    let(:job) do
+      {
         position: "PHP Dev",
         description: "Only the best...",
         source: "http://www.the-internet.com",
-        location: "London, UK"
+        location: "London, UK",
+        company: "My company",
+        tags: ["C", "R", "Ruby"],
+        posting_date: Date.today
       }
+    end
+
+    it "can create a new job with no company or date" do
+      job[:company] = nil
+      job[:posting_date] = nil
+
       post :create, job: job
 
       new_job = JSON.parse(response.body)["job"]
@@ -20,15 +29,10 @@ RSpec.describe Api::V1::JobsController, type: :controller do
 
     it "can create a new job with a date and no company" do
       date = 5.days.ago
-      job = {
-        position: "PHP Dev",
-        description: "Only the best...",
-        source: "http://www.the-internet.com",
-        location: "London, UK",
-        posting_date: date
-      }
-      post :create, job: job
+      job[:posting_date] = date
+      job[:company] = nil
 
+      post :create, job: job
       new_job = JSON.parse(response.body)["job"]
 
       expect(response.status).to eq(201)
@@ -38,19 +42,8 @@ RSpec.describe Api::V1::JobsController, type: :controller do
     end
 
     it "returns a 302 status code if existing record" do
-      create(:job, position: "PHP Dev",
-                   description: "Only the best...",
-                   source: "http://www.the-internet.com",
-                   location: "London, UK")
-
-      dup_job = {
-        position: "PHP Dev",
-        description: "Only the best...",
-        source: "http://www.the-internet.com",
-        location: "London, UK"
-      }
-      post :create, job: dup_job
-
+      post :create, job: job
+      post :create, job: job
       new_job = JSON.parse(response.body)["job"]
 
       expect(response.status).to eq(302)
@@ -63,28 +56,21 @@ RSpec.describe Api::V1::JobsController, type: :controller do
         position: "PHP Dev",
         location: "London, UK"
       }
+
       post :create, job: job
 
       expect(response.status).to eq(422)
     end
 
     it "produces multiple companies after multiple requests" do
-      job1 = {
-        position: "PHP Dev",
-        description: "Only the best...",
-        source: "http://www.the-internet.com",
-        location: "London, UK"
-      }
-
       job2 = {
         position: "PHP Dev2",
         description: "Only the best...",
         source: "http://www.the-internet.com",
-        location: "London, UK",
-        company: "My company"
+        company: "Zoo"
       }
 
-      post :create, job: job1
+      post :create, job: job
       post :create, job: job2
 
       expect(response.status).to eq(201)
@@ -93,71 +79,45 @@ RSpec.describe Api::V1::JobsController, type: :controller do
     end
 
     it "does not duplicate companies with multiple postings" do
-      job1 = {
-        position: "PHP Dev",
-        description: "Only the best...",
-        source: "http://www.the-internet.com",
-        location: "London, UK",
-        company: "My company"
-      }
-
       job2 = {
         position: "PHP Dev2",
         description: "Only the best...",
         source: "http://www.the-internet.com",
-        location: "London, UK",
         company: "My company"
       }
 
-      post :create, job: job1
+      post :create, job: job
       post :create, job: job2
 
       expect(response.status).to eq(201)
       expect(Job.count).to eq(2)
       expect(Company.count).to eq(1)
     end
-  end
 
-  it "generates tags and associates them with the job" do
-    job = {
-      position: "PHP Dev",
-      description: "Only the best...",
-      source: "http://www.the-internet.com",
-      location: "London, UK",
-      tags: ["C", "R", "Rails"]
-    }
+    it "generates tags and associates them with the job" do
+      post :create, job: job
 
-    post :create, job: job
+      expect(response.status).to eq(201)
+      expect(Job.count).to eq(1)
+      expect(Job.first.tags.count).to eq(3)
+    end
 
-    expect(response.status).to eq(201)
-    expect(Job.count).to eq(1)
-    expect(Job.first.tags.count).to eq(3)
-  end
+    it "does not duplicate matching tags" do
+      job2 = {
+        position: "PHP Dev2",
+        description: "Only the best...",
+        source: "http://www.the-internet.com",
+        tags: ["C", "Java"]
+      }
 
-  it "does not duplicate matching tags" do
-    job1 = {
-      position: "PHP Dev",
-      description: "Only the best...",
-      source: "http://www.the-internet.com",
-      location: "London, UK",
-      tags: ["C", "R", "Rails"]
-    }
+      post :create, job: job
+      post :create, job: job2
 
-    job2 = {
-      position: "PHP Dev2",
-      description: "Only the best...",
-      source: "http://www.the-internet.com",
-      location: "London, UK",
-      tags: ["C", "Java"]
-    }
-
-    post :create, job: job1
-    post :create, job: job2
-
-    expect(response.status).to eq(201)
-    expect(Job.count).to eq(2)
-    expect(Job.first.tags.count).to eq(3)
-    expect(Tag.count).to eq(4)
+      expect(response.status).to eq(201)
+      expect(Job.count).to eq(2)
+      expect(Job.first.tags.count).to eq(3)
+      expect(Tag.count).to eq(4)
+    end
   end
 
   context "job not yet created" do
@@ -186,12 +146,9 @@ RSpec.describe Api::V1::JobsController, type: :controller do
     end
 
     describe "#GET index" do
-      before(:all) do
-        @jobs = []
-        5.times { |i| @jobs << create(:job, position: "Job #{ i * 6 }") }
-      end
-
       it "#GET api/v1/jobs" do
+        5.times { |i| create(:job, position: "Job #{ i * 6 }") }
+
         get :index
         results = JSON.parse(response.body)["jobs"]
 
