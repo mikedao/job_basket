@@ -21,19 +21,10 @@ class Company < ActiveRecord::Base
         compensationandbenefits_rating: result["compensationAndBenefitsRating"].to_f,
         careeropportunities_rating: result["careerOpportunitiesRating"].to_f,
         worklifebalance_rating: result["workLifeBalanceRating"].to_f,
-        recommendtofriends_rating: result["recommendToFriendRating"].to_f
-        )
-    end
-
-    if result && result["ceo"]
-      update_attributes(
+        recommendtofriends_rating: result["recommendToFriendRating"].to_f,
         ceo_name: result["ceo"]["name"],
         approval_rating: result["ceo"]["pctApprove"].to_i
         )
-    end
-
-    if result && result["ceo"] && result["ceo"]["image"]
-      update_attributes(ceo_picture: result["ceo"]["image"]["src"])
     end
   end
 end
