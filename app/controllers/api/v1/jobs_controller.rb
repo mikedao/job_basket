@@ -7,8 +7,8 @@ class Api::V1::JobsController < ApplicationController
     if !job.new_record?
       render json: job, status: :found
     elsif job.new_record? && job.save
-      company = find_or_create_company
-      company.jobs << job
+      associate_with_company(job)
+      associate_with_tags(job)
       render json: job, status: :created
     else
       render json: job.errors.full_messages, status: :unprocessable_entity
@@ -34,8 +34,18 @@ class Api::V1::JobsController < ApplicationController
                                 :source, :location)
   end
 
-  def find_or_create_company
-    company = params[:job]["company"] || "unknowncompany"
-    Company.find_or_create_by(name: company)
+  def associate_with_company(job)
+    name = params[:job]["company"] || "unknowncompany"
+    company = Company.find_or_create_by(name: name)
+    company.jobs << job
+  end
+
+  def associate_with_tags(job)
+    tags_list = params[:job]["tags"]
+    tags = []
+    if tags_list.present?
+      tags = tags_list.map { |tag| Tag.find_or_create_by(name: tag) }
+    end
+    job.tags = tags
   end
 end
