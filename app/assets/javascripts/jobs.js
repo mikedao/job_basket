@@ -45,5 +45,8 @@ function addedToJobs(button) {
 
 function addedToHiddenJobs(button) {
   $(button).parent("div").parent("td").parent("tr").remove();
-  $("body").prepend("<div id='flash_success'>Successfully Removed</div>").hide('blind', {}, 500);
+  $(".flash-container").show().addClass("alert-success").text("Successfully Removed");
+  setTimeout(function(){
+    $('.flash-container').fadeOut();
+  }, 1000);
 }

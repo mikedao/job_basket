@@ -223,3 +223,18 @@
 #flash_success {
   background-color:#05c2d1;
 }
+
+.flash-container {
+  display: none;
+  float: right;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  opacity: 0.9;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+}
+
