@@ -24,7 +24,7 @@ RSpec.describe User, type: :model do
     it "has a profile image" do
       user = create(:user)
 
-      expect(user.profile_image_url).to eq("nowhere@example.com")
+      expect(user.profile_image_url).to eq("https://avatars.githubusercontent.com/u/8440504?v=3")
     end
   end
 
