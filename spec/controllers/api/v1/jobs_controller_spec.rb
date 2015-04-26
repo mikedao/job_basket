@@ -12,10 +12,10 @@ RSpec.describe Api::V1::JobsController, type: :controller do
       post :create, job: job
 
       new_job = JSON.parse(response.body)["job"]
-
       expect(response.status).to eq(201)
       expect(new_job["position"]).to eq("PHP Dev")
       expect(new_job["posting_date"]).to eq(Date.today.strftime("%F"))
+      expect(new_job["company"]).not_to be_blank
     end
 
     it "can create a new job with a date and no company" do
@@ -34,6 +34,7 @@ RSpec.describe Api::V1::JobsController, type: :controller do
       expect(response.status).to eq(201)
       expect(new_job["position"]).to eq("PHP Dev")
       expect(new_job["posting_date"]).to eq(date.strftime("%F"))
+      expect(new_job["company"]).not_to be_blank
     end
 
     it "returns a 302 status code if existing record" do
@@ -54,6 +55,7 @@ RSpec.describe Api::V1::JobsController, type: :controller do
 
       expect(response.status).to eq(302)
       expect(new_job["position"]).to eq("PHP Dev")
+      expect(new_job["company"]).not_to be_blank
     end
 
     it "returns a 422 if invalid job content" do
@@ -64,6 +66,55 @@ RSpec.describe Api::V1::JobsController, type: :controller do
       post :create, job: job
 
       expect(response.status).to eq(422)
+    end
+
+    it "produces multiple companies after multiple requests" do
+      job1 = {
+        position: "PHP Dev",
+        description: "Only the best...",
+        source: "http://www.the-internet.com",
+        location: "London, UK"
+      }
+
+      job2 = {
+        position: "PHP Dev2",
+        description: "Only the best...",
+        source: "http://www.the-internet.com",
+        location: "London, UK",
+        company: "My company"
+      }
+
+      post :create, job: job1
+      post :create, job: job2
+
+      expect(response.status).to eq(201)
+      expect(Job.count).to eq(2)
+      expect(Company.count).to eq(2)
+    end
+
+    it "does not duplicate companies with multiple postings" do
+      job1 = {
+        position: "PHP Dev",
+        description: "Only the best...",
+        source: "http://www.the-internet.com",
+        location: "London, UK",
+        company: "My company"
+      }
+
+      job2 = {
+        position: "PHP Dev2",
+        description: "Only the best...",
+        source: "http://www.the-internet.com",
+        location: "London, UK",
+        company: "My company"
+      }
+
+      post :create, job: job1
+      post :create, job: job2
+
+      expect(response.status).to eq(201)
+      expect(Job.count).to eq(2)
+      expect(Company.count).to eq(1)
     end
   end
 
@@ -83,9 +134,12 @@ RSpec.describe Api::V1::JobsController, type: :controller do
       it "#GET api/v1/jobs/:id" do
         get :show, id: job.id
 
+        results = JSON.parse(response.body)["job"]
+
         expect(response.status).to eq(200)
-        expect(JSON.parse(response.body)["job"]["id"]).to eq(job.id)
-        expect(JSON.parse(response.body)["job"]["position"]).to eq("Janitor")
+        expect(results["id"]).to eq(job.id)
+        expect(results["position"]).to eq("Janitor")
+        expect(results["company"]).not_to be_blank
       end
     end
 

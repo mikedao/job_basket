@@ -3,9 +3,12 @@ class Api::V1::JobsController < ApplicationController
 
   def create
     job = Job.where(job_params).first_or_initialize
+
     if !job.new_record?
       render json: job, status: :found
     elsif job.new_record? && job.save
+      company = find_or_create_company
+      company.jobs << job
       render json: job, status: :created
     else
       render json: job.errors.full_messages, status: :unprocessable_entity
@@ -29,5 +32,10 @@ class Api::V1::JobsController < ApplicationController
   def job_params
     params.require(:job).permit(:position, :description, :posting_date,
                                 :source, :location)
+  end
+
+  def find_or_create_company
+    company = params[:job]["company"] || "unknowncompany"
+    Company.find_or_create_by(name: company)
   end
 end

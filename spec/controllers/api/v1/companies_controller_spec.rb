@@ -15,11 +15,9 @@ RSpec.describe Api::V1::CompaniesController, type: :controller do
   end
 
   describe "#GET index" do
-    before(:all) do
-      3.times { create(:company) }
-    end
-
     it "#GET api/v1/companies" do
+      3.times { create(:company) }
+
       get :index
       result = JSON.parse(response.body)["companies"]
 
