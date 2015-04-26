@@ -23,9 +23,8 @@ class Company < ActiveRecord::Base
         worklifebalance_rating: result["workLifeBalanceRating"].to_f,
         recommendtofriends_rating: result["recommendToFriendRating"].to_f,
         ceo_name: result["ceo"]["name"],
-        ceo_picture: result["ceo"]["image"]["src"],
         approval_rating: result["ceo"]["pctApprove"].to_i
-      )
+        )
     end
   end
 end
