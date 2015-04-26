@@ -2,7 +2,11 @@ class JobsController < ApplicationController
   before_action :authorize!
 
   def index
-    @jobs = Job.order(posting_date: :desc).includes(:company)
+    if current_user && params[:my_jobs]
+      @jobs = Job.find(current_user.likedjobs.pluck(:job_id))
+    else
+      @jobs = Job.order(posting_date: :desc).includes(:company)
+    end
   end
 
   def show

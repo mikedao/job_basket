@@ -3,8 +3,8 @@
     <div class="sidebar-content">
       <ul>
         <li><a href="#"><h4>Relevant Jobs</h4></a></li>
-        <li><a href="#"><h4>My Jobs</h4></a></li>
-        <li><a href="#"><h4>All Jobs</h4></a></li>
+        <li><a href= <%= jobs_path(my_jobs: 'my_jobs') %>><h4>My Jobs</h4></a></li>
+        <li><a href="/jobs"><h4>All Jobs</h4></a></li>
         <br>
         <li id="filter-title"><h4>Filter By</h4></li>
       </ul>
