@@ -81,5 +81,7 @@ test:
 production:
   <<: *default
   database: job_basket_production
-  username: job_basket
-  password: <%= ENV['JOB_BASKET_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode
+  username: postgres
+  password: turingmullet
