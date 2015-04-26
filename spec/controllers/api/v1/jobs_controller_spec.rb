@@ -118,6 +118,48 @@ RSpec.describe Api::V1::JobsController, type: :controller do
     end
   end
 
+  it "generates tags and associates them with the job" do
+    job = {
+      position: "PHP Dev",
+      description: "Only the best...",
+      source: "http://www.the-internet.com",
+      location: "London, UK",
+      tags: ["C", "R", "Rails"]
+    }
+
+    post :create, job: job
+
+    expect(response.status).to eq(201)
+    expect(Job.count).to eq(1)
+    expect(Job.first.tags.count).to eq(3)
+  end
+
+  it "does not duplicate matching tags" do
+    job1 = {
+      position: "PHP Dev",
+      description: "Only the best...",
+      source: "http://www.the-internet.com",
+      location: "London, UK",
+      tags: ["C", "R", "Rails"]
+    }
+
+    job2 = {
+      position: "PHP Dev2",
+      description: "Only the best...",
+      source: "http://www.the-internet.com",
+      location: "London, UK",
+      tags: ["C", "Java"]
+    }
+
+    post :create, job: job1
+    post :create, job: job2
+
+    expect(response.status).to eq(201)
+    expect(Job.count).to eq(2)
+    expect(Job.first.tags.count).to eq(3)
+    expect(Tag.count).to eq(4)
+  end
+
   context "job not yet created" do
     it "#GET api/v1/jobs" do
       get :index
