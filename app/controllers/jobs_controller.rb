@@ -5,7 +5,8 @@ class JobsController < ApplicationController
     if current_user && params[:my_jobs]
       @jobs = Job.find(current_user.likedjobs.pluck(:job_id))
     else
-      @jobs = Job.where.not(id: current_user.jobshidden.pluck(:id)).order(posting_date: :desc).includes(:company)
+      @jobs = Job.where.not(id: current_user.jobshidden.pluck(:id))
+        .order(posting_date: :desc).includes(:company)
     end
   end
 

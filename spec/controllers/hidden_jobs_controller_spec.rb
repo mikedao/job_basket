@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe HiddenJobsController, type: :controller do
   before do
@@ -15,5 +15,4 @@ RSpec.describe HiddenJobsController, type: :controller do
       expect(@user.jobshidden.first).to eq(@job)
     end
   end
-
 end
