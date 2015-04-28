@@ -16,6 +16,8 @@ gem "awesome_print"
 gem "quiet_assets", group: :development
 gem "sprockets", "2.11.0"
 gem "active_model_serializers"
+gem "newrelic_rpm"
+gem "skylight"
 
 group :development, :test do
   gem "byebug"

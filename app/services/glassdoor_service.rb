@@ -15,7 +15,7 @@ class GlassdoorService
     results = exact_matches(JSON.parse(response.body)["response"])
 
     if results
-      results.first
+      results["employers"].first
     end
   end
 
