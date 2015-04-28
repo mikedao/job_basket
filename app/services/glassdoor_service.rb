@@ -12,9 +12,15 @@ class GlassdoorService
   private
 
   def parse(response)
-    results = JSON.parse(response.body)["response"]
+    results = exact_matches(JSON.parse(response.body)["response"]["employers"])
     if results
-      results["employers"].first
+      results.first
+    end
+  end
+
+  def exact_matches(employers)
+    employers.select do |employer|
+      employer["exactMatch"] == true
     end
   end
 end
