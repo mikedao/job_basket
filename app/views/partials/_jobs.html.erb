@@ -2,7 +2,16 @@
   <% @jobs.each do |job| %>
     <tr class="index-job" id="<%= job.id %>">
       <td class="index-job-detail">
-        <h5><strong><%= link_to job.position, "" %></strong></h5>
+        <h5><strong><%= link_to job.position, job_path(job) %></strong></h5>
+      </td>
+      <td class="index-job-detail">
+        <h5><%= job.company.name %></h5>
+      </td>
+      <td class="index-job-detail">
+        <h5><%= job.location %></h5>
+      </td>
+      <td class="index-job-detail">
+        <h5><%= job.posting_date.strftime("%m/%d") %></h5>
       </td>
       <% if current_user.jobsliked.include?(job) %>
         <td class="index-job-detail">
@@ -19,16 +28,7 @@
             </button>
           </div>
         </td>
-      <% end %>
-      <td class="index-job-detail">
-        <h5><%= job.company.name %></h5>
-      </td>
-      <td class="index-job-detail">
-        <h5><%= job.location %></h5>
-      </td>
-      <td class="index-job-detail">
-        <h5><%= job.posting_date.strftime("%m/%d") %></h5>
-      </td>
+      <% end %> 
     <% end %>
   </tr>
 </table>

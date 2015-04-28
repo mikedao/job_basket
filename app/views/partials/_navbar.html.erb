@@ -1,13 +1,15 @@
 <header class='mod-header'>
-  <div class='layout-wrap'>
-    <h1><a href="http://turing.io">Turing School of Software & Design</a></h1>
-      <%= image_tag(current_user.profile_image_url, class: "nav-image img-circle", width: '7%', height: '7%') %>
-    <nav>
-      <ul>
-        <li><a href="/jobs">Dashboard</a></li>
-        <li><a href="/preferences/">Preferences</a></li>
-        <li><a href="/logout">Logout</a></li>
-      </ul>
-    </nav>
+<div class='layout-wrap'>
+  <h1><a href="http://turing.io">Turing School of Software & Design</a></h1>
+  <div class="queue-count">
+    1
   </div>
+  <%= image_tag(current_user.profile_image_url, class: "nav-image img-circle", width: '7%', height: '7%') %>
+  <nav>
+  <ul>
+    <li><%= current_user.username %></li>
+    <li><a href="/logout">Logout</a></li>
+  </ul>
+  </nav>
+</div>
 </header>
