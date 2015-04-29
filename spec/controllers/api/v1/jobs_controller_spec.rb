@@ -78,6 +78,16 @@ RSpec.describe Api::V1::JobsController, type: :controller do
       expect(Company.count).to eq(2)
     end
 
+    it "allows for a company name of an empty string" do
+      job[:company] = ""
+
+      post :create, job: job
+
+      expect(response.status).to eq(201)
+      expect(Job.count).to eq(1)
+      expect(Company.count).to eq(1)
+    end
+
     it "does not duplicate companies with multiple postings" do
       job2 = {
         position: "PHP Dev2",
