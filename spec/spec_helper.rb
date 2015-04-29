@@ -5,6 +5,7 @@ require "capybara/poltergeist"
 require "rails_helper"
 require "factory_girl_rails"
 require "support/factory_girl"
+# require "vcr"
 
 OmniAuth.config.test_mode = true
 
@@ -45,3 +46,9 @@ RSpec.configure do |config|
 end
 
 Capybara.javascript_driver = :poltergeist
+
+# VCR.configure do |c|
+#   c.cassette_library_dir = "fixtures/vcr_cassettes"
+#   c.hook_into :webmock
+#   allow_http_connections_when_no_cassette = true
+# end

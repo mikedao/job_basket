@@ -33,4 +33,9 @@ group :development, :test do
   gem "poltergeist"
 end
 
-gem "simplecov", require: false, group: :test
+group :test do
+  gem "simplecov", require: false
+  gem "vcr"
+  # gem "webmock"
+  # gem "faraday", "< 0.9.0"
+end
