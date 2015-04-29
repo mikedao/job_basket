@@ -37,6 +37,6 @@ end
 group :test do
   gem "simplecov", require: false
   gem "vcr"
-  # gem "webmock"
-  # gem "faraday", "< 0.9.0"
+  gem "webmock"
+  gem "faraday", "< 0.9.0"
 end

@@ -1,7 +1,7 @@
 class CompanyWorker
   include Sidekiq::Worker
 
-  def perform(company, count)
+  def perform(company, _count)
     result = GlassdoorService.new(GlassdoorParser).company(company)
     if result
       Company.find_by(name: company).update_attributes(
