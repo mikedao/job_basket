@@ -12,6 +12,11 @@ class ApplicationController < ActionController::Base
     @disable_nav = true
   end
 
+  def queued_jobs
+    @queued_jobs ||= Job.where(approved: false).count
+  end
+  helper_method :queued_jobs
+
   def authorize!
     redirect_to root_path unless current_user
   end
