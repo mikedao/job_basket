@@ -5,6 +5,7 @@ require "capybara/poltergeist"
 require "rails_helper"
 require "factory_girl_rails"
 require "support/factory_girl"
+require "sidekiq/testing"
 # require "vcr"
 
 OmniAuth.config.test_mode = true
@@ -42,6 +43,10 @@ RSpec.configure do |config|
     DatabaseCleaner.cleaning do
       example.run
     end
+  end
+
+  config.before(:each) do
+    Sidekiq::Worker.clear_all
   end
 end
 
