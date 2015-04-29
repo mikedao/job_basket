@@ -1,28 +1,16 @@
 class GlassdoorService
-  attr_reader :connection
+  attr_reader :connection, :parser
 
-  def initialize
+  def initialize(parser)
     @connection = Faraday.new(url: "http://api.glassdoor.com/api")
+    @parser = parser.new
   end
 
   def company(company_name)
-    parse(@connection.get(url_params(company_name)))
+    parser.parse(@connection.get(url_params(company_name)))
   end
 
   private
-
-  def parse(response)
-    results = exact_matches(JSON.parse(response.body)["response"]["employers"])
-    if results
-      results.first
-    end
-  end
-
-  def exact_matches(employers)
-    employers.select do |employer|
-      employer["exactMatch"] == true
-    end
-  end
 
   def url_params(company_name)
     ("api.htm?t.p=#{Figaro.env.glassdoor_partner_id}&

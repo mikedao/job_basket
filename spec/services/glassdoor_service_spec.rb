@@ -2,15 +2,15 @@ require "rails_helper"
 
 RSpec.describe GlassdoorService do
   it "has a connection" do
-    service = GlassdoorService.new
+    service = GlassdoorService.new(GlassdoorParser)
 
-    expect(service.class).to eq(GlassdoorService)
+    expect(service.connection).to_not be_nil
   end
 
   it "hits glassdoor for company information" do
-    service = GlassdoorService.new
+    service = GlassdoorService.new(GlassdoorParser)
 
     result = service.company("Twitter")
-    expect(result["ceo"]["name"].class).to eq(String)
+    expect(result["ceo"]["name"]).to eq("Dick Costolo")
   end
 end
