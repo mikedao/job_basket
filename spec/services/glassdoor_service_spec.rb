@@ -2,11 +2,9 @@ require "rails_helper"
 
 RSpec.describe GlassdoorService do
   it "has a connection" do
-    VCR.use_cassette("glassdoor_service_setup") do
-      service = GlassdoorService.new(GlassdoorParser)
+    service = GlassdoorService.new(GlassdoorParser)
 
-      expect(service.connection).to_not be_nil
-    end
+    expect(service.connection).to_not be_nil
   end
 
   it "hits glassdoor for company information" do
