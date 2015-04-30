@@ -8,6 +8,7 @@ class JobsController < ApplicationController
       @jobs = Job.where.not(id: current_user.jobshidden.pluck(:id))
         .order(posting_date: :desc).includes(:company)
     end
+    @tags = Tag.pluck(:name)
   end
 
   def show

@@ -7,48 +7,20 @@
           <li><a href= <%= jobs_path(my_jobs: 'my_jobs') %>><h4>My Jobs</h4></a></li>
           <li><a href="/jobs"><h4>All Jobs</h4></a></li>
           <br>
-          <li id="filter-title"><h4>Filter By</h4></li>
+          <form class="form-inline top-search shadowed">
+            <input type="text" id="search-bar" class="form-control" placeholder="Search for anything...">
+          </form>
+          <br>
+
+          <div class="tags">
+            <% @tags.each do |tag| %>
+              <label>
+                <input type="checkbox" rel="<%= tag.split(' ').join %>" />
+                <%= tag %>
+              </label><br>
+            <% end %>
+          </div>
         </ul>
-      </div>
-      <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-        <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="headingOne">
-            <h4 class="panel-title">
-              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                Location
-              </a>
-            </h4>
-          </div>
-          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-            <div class="panel-body">
-              <% 10.times do %>
-                <label>
-                  <input type="checkbox" value="id"/>
-                  <%= Faker::Address.city %>
-                </label><br>
-              <% end %>
-            </div>
-          </div>
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="headingTwo">
-            <h4 class="panel-title">
-              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                Tags
-              </a>
-            </h4>
-          </div>
-          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-            <div class="panel-body">
-              <% Tag.all.each do |tag| %>
-                <label>
-                  <input type="checkbox" value="id"/>
-                  <%=tag.name %>
-                </label><br>
-              <% end %>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
