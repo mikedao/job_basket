@@ -8,7 +8,7 @@ RSpec.describe "JobsPages", type: :request do
   end
 
   describe "GET /jobs" do
-    it "can like jobs" do
+    it "shows liked jobs" do
       job = create(:job)
       @user.jobsliked << job
 
@@ -19,7 +19,7 @@ RSpec.describe "JobsPages", type: :request do
       expect(page).to have_content("Added to My Jobs")
     end
 
-    it "can hide jobs" do
+    it "doesn't show hidden jobs" do
       hidden_job = create(:job, position: "Hiding job")
       @user.jobshidden << hidden_job
 
