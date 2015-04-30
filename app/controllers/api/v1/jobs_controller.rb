@@ -34,9 +34,13 @@ class Api::V1::JobsController < ApplicationController
                                 :source, :location)
   end
 
+  def company_name
+    company = params[:job]["company"]
+    company.present? ? company : "unknowncompany"
+  end
+
   def associate_with_company(job)
-    name = params[:job]["company"] || "unknowncompany"
-    company = Company.find_or_create_by(name: name)
+    company = Company.find_or_create_by(name: company_name)
     company.jobs << job
   end
 
