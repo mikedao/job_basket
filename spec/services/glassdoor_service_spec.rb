@@ -8,7 +8,7 @@ RSpec.describe GlassdoorService do
   end
 
   it "hits glassdoor for company information" do
-    VCR.use_cassette("glassdoor_service") do
+    VCR.use_cassette("glassdoor_service", record: :new_episodes) do
       service = GlassdoorService.new(GlassdoorParser)
 
       result = service.company("Twitter")
