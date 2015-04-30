@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "MyjobsPages", type: :request do
   describe "GET /myjobs_pages" do

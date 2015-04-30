@@ -15,4 +15,3 @@ RSpec.describe MyJobsController, type: :controller do
     expect(@user.jobsliked.first).to eq(@job)
   end
 end
-
