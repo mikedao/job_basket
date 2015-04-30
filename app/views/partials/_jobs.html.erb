@@ -4,9 +4,14 @@
       <td class="index-job-detail">
         <h5><strong><%= link_to job.position, job_path(job) %></strong></h5>
       </td>
-      <td class="index-job-detail">
-        <h5><%= job.company.name %></h5>
-      </td>
+      <% if job.company %>
+        <td class="index-job-detail">
+          <h5><%= job.company.name %></h5>
+        </td>
+      <% else %>
+        <td class="index-job-detail">
+        </td>
+      <% end %>
       <td class="index-job-detail">
         <h5><%= job.location %></h5>
       </td>
