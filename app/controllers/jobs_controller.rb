@@ -15,4 +15,8 @@ class JobsController < ApplicationController
     @job_description =
       @job.description.gsub("]", "").gsub("[", "").gsub("\"", "").gsub(",", "")
   end
+
+  def update
+
+  end
 end

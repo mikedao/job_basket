@@ -1,7 +1,7 @@
 <header class='mod-header'>
   <div class='layout-wrap'>
     <h1><%= link_to "Turing School of Software & Design", jobs_path %></h1>
-    <%= link_to root_path do %>
+    <%= link_to queued_jobs_path, id: "queue" do %>
       <div class="queue-count">
         <%= queued_jobs %>
       </div>
