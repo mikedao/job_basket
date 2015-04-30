@@ -63,7 +63,7 @@
   },
   {
     "name":"rubynow",
-    "base_url":"http://jobs.rubynow.com/",
+    "base_url":"http://jobs.rubynow.com",
     "summary":{
       "url":"/",
       "has_sub_pages":"true",
@@ -153,6 +153,202 @@
           "field":"description",
           "method":"all",
           "path":"div.listing-container div",
+          "loop_collect":"text",
+          "join":"\n"
+        }
+      ]
+    }
+  },
+  {
+    "name":"jrdevjobs",
+    "base_url":"http://www.jrdevjobs.com",
+    "summary":{
+      "url":"/jobs?query=ruby",
+      "has_sub_pages":"true",
+      "paginated":"true",
+      "pagination":{
+        "format":"&page=",
+        "start":"1",
+        "scale":"1",
+        "records_per_page":"20"
+      },
+      "loop":"tr.job-list",
+      "fields":[
+        {
+          "field":"position",
+          "method":"find",
+          "path":"td.col-lg-7 a"
+        },
+        {
+          "field":"url",
+          "method":"find",
+          "path":"td.col-lg-7 a",
+          "attr":"href"
+        },
+        {
+          "field":"location",
+          "method":"first",
+          "path":"td.col-lg-2"
+        },
+        {
+          "field":"posting_date",
+          "method":"find",
+          "path":"td.col-lg-1"
+        }
+      ]
+    },
+    "sub_page":{
+      "fields":[
+        {
+          "field":"description",
+          "method":"find",
+          "path":"span.summary"
+        },
+        {
+          "field":"company",
+          "method":"find",
+          "path":"h4"
+        }
+      ]
+    }
+  },
+  {
+    "name":"rorjobs",
+    "base_url":"http://www.rorjobs.com",
+    "summary":{
+      "url":"",
+      "has_sub_pages":"true",
+      "paginated":"false",
+      "loop":"div#jobs-table div.job",
+      "fields":[
+        {
+          "field":"company",
+          "method":"find",
+          "path":"div.company"
+        },
+        {
+          "field":"position",
+          "method":"find",
+          "path":"div.title a"
+        },
+        {
+          "field":"url",
+          "method":"find",
+          "path":"div.title a",
+          "attr":"href"
+        },
+        {
+          "field":"location",
+          "method":"find",
+          "path":"div.location"
+        },
+        {
+          "field":"posting_date",
+          "method":"find",
+          "path":"div.date"
+        }
+      ]
+    },
+    "sub_page":{
+      "fields":[
+        {
+          "field":"description",
+          "method":"all",
+          "path":"div.job-listing-body p",
+          "loop_collect":"text",
+          "join":"\n"
+        }
+      ]
+    }
+  },
+  {
+    "name":"railsjobbers",
+    "base_url":"http://railsjobbers.com",
+    "summary":{
+      "url":"",
+      "has_sub_pages":"true",
+      "paginated":"false",
+      "loop":"div.page-content div#job-",
+      "fields":[
+        {
+          "field":"company",
+          "method":"find",
+          "path":"div.post-meta span[title='employer']"
+        },
+        {
+          "field":"position",
+          "method":"find",
+          "path":"div.post-title a"
+        },
+        {
+          "field":"url",
+          "method":"find",
+          "path":"div.post-title a",
+          "attr":"href"
+        },
+        {
+          "field":"posting_date",
+          "method":"find",
+          "path":"a.date",
+          "attr":"title"
+        }
+      ]
+    },
+    "sub_page":{
+      "fields":[
+        {
+          "field":"location",
+          "method":"first",
+          "path":"div.field-item div.bold"
+        },
+        {
+          "field":"description",
+          "method":"all",
+          "path":"div#job_detail_description p",
+          "loop_collect":"text",
+          "join":"\n"
+        }
+      ]
+    }
+  },
+  {
+    "name":"toprubyjobs",
+    "base_url":"https://toprubyjobs.com",
+    "summary":{
+      "url":"",
+      "has_sub_pages":"true",
+      "paginated":"false",
+      "loop":"ul#jobs li.job",
+      "fields":[
+        {
+          "field":"position",
+          "method":"find",
+          "path":"h4.job-title a"
+        },
+        {
+          "field":"url",
+          "method":"find",
+          "path":"h4.job-title a",
+          "attr":"href"
+        }
+      ]
+    },
+    "sub_page":{
+      "fields":[
+        {
+          "field":"company",
+          "method":"find",
+          "path":"dd:nth-child(2) a"
+        },
+        {
+          "field":"location",
+          "method":"first",
+          "path":"dd:nth-child(4)"
+        },
+        {
+          "field":"description",
+          "method":"all",
+          "path":"div.description p",
           "loop_collect":"text",
           "join":"\n"
         }
