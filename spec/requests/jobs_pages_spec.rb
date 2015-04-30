@@ -10,7 +10,7 @@ RSpec.describe "JobsPages", type: :request do
   describe "GET /jobs" do
     it "shows liked jobs" do
       job = create(:job)
-      @user.jobsliked << job
+      @user.jobs_liked << job
 
       visit jobs_path
 
@@ -21,7 +21,7 @@ RSpec.describe "JobsPages", type: :request do
 
     it "doesn't show hidden jobs" do
       hidden_job = create(:job, position: "Hiding job")
-      @user.jobshidden << hidden_job
+      @user.jobs_hidden << hidden_job
 
       visit jobs_path
 
