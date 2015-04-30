@@ -10,6 +10,7 @@ RSpec.describe "MyjobsPages", type: :request do
 
     it "has liked jobs" do
       job = create(:job)
+      @tags = create(:tag)
       hidden_job = create(:job)
       @user.jobsliked << job
       @user.jobshidden << hidden_job
