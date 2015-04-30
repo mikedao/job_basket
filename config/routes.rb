@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   resources :jobs
   resources :liked_jobs, only: [:create]
   resources :hidden_jobs, only: [:create]
-  resources :my_jobs, only: [:index]
   get "/auth/github/callback", to: "sessions#create"
   get "/logout", to: "sessions#destroy"
 
