@@ -12,4 +12,8 @@ class Job < ActiveRecord::Base
 
   scope :by_newest, -> { order("posting_date DESC") }
   default_scope { by_newest }
+
+  def self.visible_for(user)
+    all.where.not(id: user.jobshidden.pluck(:id))
+  end
 end
