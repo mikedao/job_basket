@@ -16,6 +16,7 @@ gem "awesome_print"
 gem "quiet_assets", group: :development
 gem "sprockets", "2.11.0"
 gem "active_model_serializers"
+gem "sidekiq"
 
 group :development, :test do
   gem "byebug"
@@ -33,4 +34,9 @@ group :development, :test do
   gem "poltergeist"
 end
 
-gem "simplecov", require: false, group: :test
+group :test do
+  gem "simplecov", require: false
+  gem "vcr"
+  gem "webmock"
+  gem "faraday", "< 0.9.0"
+end
