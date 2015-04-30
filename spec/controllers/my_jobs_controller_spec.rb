@@ -9,9 +9,9 @@ RSpec.describe MyJobsController, type: :controller do
 
   it "#index" do
     @job = create(:job)
-    @user.jobsliked << @job
+    @user.jobs_liked << @job
     get :index
 
-    expect(@user.jobsliked.first).to eq(@job)
+    expect(@user.jobs_liked.first).to eq(@job)
   end
 end
