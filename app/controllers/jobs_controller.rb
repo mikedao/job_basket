@@ -3,7 +3,7 @@ class JobsController < ApplicationController
 
   def index
     @jobs = Job.where.not(id: current_user.jobshidden.pluck(:id))
-    .order(posting_date: :desc).includes(:company)
+    .includes(:company)
   end
 
   def show
