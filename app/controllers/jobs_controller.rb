@@ -2,8 +2,7 @@ class JobsController < ApplicationController
   before_action :authorize!
 
   def index
-    @jobs = Job.where.not(id: current_user.jobshidden.pluck(:id))
-    .includes(:company)
+    @jobs = Job.visible_for(current_user).includes(:company)
     @tags = Tag.pluck(:name)
   end
 
