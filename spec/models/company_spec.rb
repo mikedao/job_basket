@@ -23,6 +23,8 @@ RSpec.describe Company, type: :model do
       company.jobs << create(:job, position: "job2")
 
       expect(company.jobs.count).to eq(2)
+      expect(company.jobs.first.position).to eq("job1")
+      expect(company.jobs.last.position).to eq("job2")
     end
   end
 end
