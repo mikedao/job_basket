@@ -20,7 +20,7 @@ function unlikeJob(id, button) {
     url: "/liked_jobs/" + id,
     data: {id: id},
     success: function() {
-     removedFromLikedJobs();
+     removedFromLikedJobs(button);
     },
     error: function() {
       alert("Job could not be removed at this time");
@@ -71,7 +71,8 @@ function addedToHiddenJobs(button) {
   }, 1000);
 }
 
-function removedFromLikedJobs() {
+function removedFromLikedJobs(button) {
+  $(button).parent("div").parent("td").parent("tr").remove();
   $(".flash-container").show().addClass("alert-success")
     .text("Successfully Removed");
     setTimeout(function() {
