@@ -3,6 +3,7 @@ class JobsController < ApplicationController
 
   def index
     @jobs = Job.visible_for(current_user).includes(:company)
+    @tags = Tag.pluck(:name)
   end
 
   def show
