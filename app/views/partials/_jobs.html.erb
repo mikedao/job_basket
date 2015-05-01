@@ -13,7 +13,7 @@
       <td class="index-job-detail">
         <h5><%= job.posting_date.strftime("%m/%d") %></h5>
       </td>
-      <% if current_user.jobsliked.include?(job) %>
+      <% if current_user.jobs_liked.include?(job) %>
         <td class="index-job-detail">
           <h5 class="added-job">Added to My Jobs</h5>
         </td>
