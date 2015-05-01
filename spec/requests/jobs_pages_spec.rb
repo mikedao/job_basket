@@ -37,7 +37,7 @@ RSpec.describe "JobsPages", type: :request do
       visit job_path(job)
 
       expect(page).to have_content(job.position)
-      expect(page).to have_content(Date.today.strftime("%B %e, %Y"))
+      expect(page).to have_content(Date.today.strftime("%b %d, %Y"))
       expect(page).to have_content(job.description)
       expect(page).to have_content(job.location)
     end
