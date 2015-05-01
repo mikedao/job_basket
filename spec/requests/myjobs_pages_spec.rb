@@ -11,6 +11,7 @@ RSpec.describe "MyjobsPages", type: :request do
     it "has only liked jobs" do
       job = create(:job)
       @user.jobs_liked << job
+      tag = create(:tag)
 
       visit my_jobs_path
 
