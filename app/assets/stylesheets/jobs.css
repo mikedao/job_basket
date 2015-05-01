@@ -29,6 +29,10 @@ table {
   display: block;
 }
 
+.btn-group {
+  width: 150px;
+}
+
 .jobs-table {
   margin-bottom: 35px;
 }
