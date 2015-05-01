@@ -8,7 +8,7 @@ $(document).ready(function() {
     hideJob(id, this);
   });
 
-  $(".unlike").click(function() {
+  $("btn-danger.unlike").click(function() {
     var id = $(this).parents("tr").attr("id")
     unlikeJob(id, this);
   });
