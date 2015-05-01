@@ -43,6 +43,10 @@ table {
   margin-top: -6px;
 }
 
+.btn-group {
+  width: 150px;
+}
+
 .jobs-table {
   margin-bottom: 35px;
 }
