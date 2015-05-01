@@ -10,14 +10,13 @@ RSpec.describe "MyjobsPages", type: :request do
 
     it "has liked jobs" do
       job = create(:job)
-      hidden_job = create(:job)
+      hidden_job = create(:job, description: "A new job")
       @user.jobsliked << job
       @user.jobshidden << hidden_job
       visit my_jobs_path
 
       expect(page).to have_content(job.position)
       expect(page).to have_content(job.location)
-      expect(page).to have_content("Added to My Jobs")
     end
   end
 end
