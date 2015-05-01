@@ -7,7 +7,26 @@ $(document).ready(function() {
     var id = $(this).parents("tr").attr("id");
     hideJob(id, this);
   });
+
+  $(".unlike").click(function() {
+    var id = $(this).parents("tr").attr("id")
+    unlikeJob(id, this);
+  });
 });
+
+function unlikeJob(id, button) {
+  $.ajax({
+    type: "DELETE",
+    url: "/liked_jobs/" + id,
+    data: {id: id},
+    success: function() {
+     removedFromLikedJobs();
+    },
+    error: function() {
+      alert("Job could not be removed at this time");
+    }
+  });
+}
 
 function hideJob(id, button) {
   $.ajax({
@@ -50,4 +69,12 @@ function addedToHiddenJobs(button) {
   setTimeout(function(){
     $(".flash-container").fadeOut();
   }, 1000);
+}
+
+function removedFromLikedJobs() {
+  $(".flash-container").show().addClass("alert-success")
+    .text("Successfully Removed");
+    setTimeout(function() {
+      $(".flash-container").fadeOut();
+    }, 1000);
 }

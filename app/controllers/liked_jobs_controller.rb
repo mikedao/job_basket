@@ -7,4 +7,10 @@ class LikedJobsController < ApplicationController
       render json: @likedjob
     end
   end
+
+  def destroy
+    @likedjob = Likedjob.find_by(job_id: params[:id],
+                                 user_id: current_user.id).delete
+    redirect_to my_jobs_path
+  end
 end
