@@ -14,6 +14,6 @@ class Job < ActiveRecord::Base
   default_scope { by_newest }
 
   def self.visible_for(user)
-    all.where.not(id: user.jobshidden.pluck(:id))
+    all.where.not(id: user.jobs_hidden.pluck(:id))
   end
 end
