@@ -3,12 +3,13 @@ $(document).ready(function() {
     var id = $(this).parents("tr").attr("id");
     likeJob(id, this);
   });
-  $(".btn-danger").click(function() {
+  $(".hide-job").click(function(e) {
+    e.preventDefault();
     var id = $(this).parents("tr").attr("id");
     hideJob(id, this);
   });
 
-  $("btn-danger.unlike").click(function() {
+  $(".unlike").click(function() {
     var id = $(this).parents("tr").attr("id")
     unlikeJob(id, this);
   });
@@ -16,8 +17,8 @@ $(document).ready(function() {
 
 function unlikeJob(id, button) {
   $.ajax({
-    type: "DELETE",
-    url: "/liked_jobs"+ id,
+    method: "DELETE",
+    url: "/liked_jobs/" + id,
     data: {id: id},
     success: function() {
      removedFromLikedJobs(button);
@@ -72,7 +73,7 @@ function addedToHiddenJobs(button) {
 }
 
 function removedFromLikedJobs(button) {
-  $(button).parent("div").parent("td").parent("tr").remove();
+  button.parentElement.parentElement.remove();
   $(".flash-container").show().addClass("alert-success")
     .text("Successfully Removed");
     setTimeout(function() {
