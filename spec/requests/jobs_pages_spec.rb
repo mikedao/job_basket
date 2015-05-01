@@ -18,7 +18,6 @@ RSpec.describe "JobsPages", type: :request do
       expect(page).to have_content(job.position)
       expect(page).to have_content(job.location)
       expect(page).to have_content("Added to My Jobs")
-      save_and_open_page
     end
 
     it "doesn't show hidden jobs" do
