@@ -3,6 +3,16 @@
   width: 80%;
 }
 
+.job-listing {
+  min-height: 50px;
+}
+
+.job-listing-text {
+  padding-top: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 table {
   width: 100%;
 }
@@ -27,6 +37,10 @@ table {
 
 .job-buttons {
   display: block;
+}
+
+.btn-group-sm {
+  margin-top: -6px;
 }
 
 .btn-group {
