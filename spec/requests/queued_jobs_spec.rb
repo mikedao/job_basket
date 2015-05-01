@@ -28,6 +28,6 @@ RSpec.describe "QueuedJobs", type: :request do
     @queued_job = create(:job, position: "Rails Dev", approved: false)
     visit queued_jobs_path
     click_button "Review"
-    expect(current_path).to eq(queued_job_path(@queued_job))
+    expect(current_path).to eq(edit_queued_job_path(@queued_job))
   end
 end
