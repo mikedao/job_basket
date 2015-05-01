@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe CompanyWorker do
   it "populates company data" do
-    VCR.use_cassette("company_worker") do
+    VCR.use_cassette("company_worker", record: :new_episodes) do
       company = Company.create(name: "Twitter")
       worker = CompanyWorker.new
 
