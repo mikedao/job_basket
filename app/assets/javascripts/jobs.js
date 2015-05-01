@@ -17,7 +17,7 @@ $(document).ready(function() {
 function unlikeJob(id, button) {
   $.ajax({
     type: "DELETE",
-    url: "/liked_jobs/" + id,
+    url: "/liked_jobs"+ id,
     data: {id: id},
     success: function() {
      removedFromLikedJobs(button);
