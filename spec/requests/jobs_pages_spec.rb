@@ -11,6 +11,7 @@ RSpec.describe "JobsPages", type: :request do
     it "shows liked jobs" do
       job = create(:job)
       @user.jobsliked << job
+      @tags = create(:tag)
 
       visit jobs_path
 

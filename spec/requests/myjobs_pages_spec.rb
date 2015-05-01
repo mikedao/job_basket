@@ -1,7 +1,6 @@
 require "rails_helper"
 
 RSpec.describe "MyjobsPages", type: :request do
-
   describe "GET /myjobs" do
     before do
       @user = create(:user)
@@ -38,6 +37,5 @@ RSpec.describe "MyjobsPages", type: :request do
 
       expect(page).to_not have_content("Not liked yet")
     end
->>>>>>> 7e437f8937b1eb01b0728b874a9764e66ca2d99a
   end
 end
