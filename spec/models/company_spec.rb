@@ -23,14 +23,6 @@ RSpec.describe Company, type: :model do
       company.jobs << create(:job, position: "job2")
 
       expect(company.jobs.count).to eq(2)
-      expect(company.jobs.first.position).to eq("job1")
-      expect(company.jobs.last.position).to eq("job2")
     end
-  end
-
-  it "populates company data on create" do
-    company = Company.create(name: "Twitter")
-
-    expect(company.ceo_name.class).to eq(String)
   end
 end

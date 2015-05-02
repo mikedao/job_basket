@@ -12,7 +12,7 @@ RSpec.describe LikedJobsController, type: :controller do
       @job = create(:job)
       post :create, id: @job.id
 
-      expect(@user.jobsliked.first).to eq(@job)
+      expect(@user.jobs_liked.first).to eq(@job)
     end
   end
 end
