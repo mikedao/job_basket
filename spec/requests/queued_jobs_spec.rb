@@ -26,6 +26,9 @@ RSpec.describe "QueuedJobs", type: :request do
 
   it "user can review queued job" do
     @queued_job = create(:job, position: "Rails Dev", approved: false)
+    tag = create(:tag)
+    @queued_job.tags << tag
+
     visit queued_jobs_path
     click_button "Review"
     expect(current_path).to eq(edit_queued_job_path(@queued_job))

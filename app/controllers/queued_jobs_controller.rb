@@ -1,6 +1,7 @@
 class QueuedJobsController < ApplicationController
   def index
     @jobs = Job.where(approved: false)
+    @tags = @jobs.flat_map { |job| job.tags.pluck(:name) }.uniq
   end
 
   def edit

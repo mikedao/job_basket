@@ -1,27 +1,13 @@
-<table class="jobs-table">
+<ul class="jobs-table">
   <% @jobs.each do |job| %>
-    <tr class="index-job" id="<%= job.id %>">
-      <td class="index-job-detail">
-        <h5><strong><%= link_to job.position, job_path(job) %></strong></h5>
-      </td>
-      <td class="index-job-detail">
-        <h5><%= job.company.name %></h5>
-      </td>
-      <td class="index-job-detail">
-        <h5><%= job.location %></h5>
-      </td>
-      <td class="index-job-detail">
-        <h5><%= job.posting_date.strftime("%m/%d") %></h5>
-      </td>
-      <% if current_user.jobs_liked.include?(job) %>
-        <td class="index-job-detail">
-          <h5 class="added-job">Added to My Jobs</h5>
-        </td>
-      <% else %>
-
-        <%= render partial: "/partials/#{partial}", locals: { job: job } %>
-
-      <% end %>
-    <% end %>
-  </tr>
-</table>
+    <li class="job-listing index-job search-item <%= job.tags.map { |tag| tag.name}.join(" ") %>" id="<%= job.id %>">
+      <div class="job-listing-text row">
+        <span class="position col-md-3"><strong><%= link_to job.position, job_path(job) %></strong></span>
+        <span class="company col-md-2"><%= job.company.name %></span>
+        <span class="location col-md-2"><%= job.location %></span>
+        <span class="date col-md-2"><%= job.posting_date.strftime("%m/%d") %></span>
+        <%= render partial: "/partials/#{partial}", locals: {job: job} %>
+      </div>
+    </li>
+  <% end %>
+</ul>

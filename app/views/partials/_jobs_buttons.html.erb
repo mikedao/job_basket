@@ -1,10 +1,14 @@
-<td class="index-job-detail">
-  <div class="btn-group btn-group-sm" role="group">
-    <button id="like" class="btn btn-success">
-      <i class="fa fa-star fa-lg"></i> Like
-    </button>
-    <button class="btn btn-danger">
-      <i class="fa fa-trash-o fa-lg"></i> Remove
-    </button>
-  </div>
-</td>
+<% if current_user.jobs_liked.include?(job) %>
+  <span class="added-job pull-right col-md-3">Added to My Jobs</span>
+<% else %>
+  <td class="index-job-detail">
+    <div class="btn-group btn-group-sm" role="group">
+      <button id="like" class="btn btn-success">
+        <i class="fa fa-star fa-lg"></i> Like
+      </button>
+      <button class="btn btn-danger">
+        <i class="fa fa-trash-o fa-lg"></i> Remove
+      </button>
+    </div>
+  </td>
+<% end %>

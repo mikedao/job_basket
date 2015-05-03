@@ -3,12 +3,11 @@ class JobsController < ApplicationController
 
   def index
     @jobs = Job.visible_for(current_user).includes(:company)
+    @tags = Tag.pluck(:name)
   end
 
   def show
     @job = Job.find(params[:id])
-    @job_description =
-      @job.description.gsub("]", "").gsub("[", "").gsub("\"", "").gsub(",", "")
   end
 
   def update
