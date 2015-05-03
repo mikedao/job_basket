@@ -1,10 +1,10 @@
 $(document).ready(function() {
   $(".btn-success").click(function() {
-    var id = $(this).parents("tr").attr("id");
+    var id = $(this).parents("li").attr("id");
     likeJob(id, this);
   });
   $(".btn-danger").click(function() {
-    var id = $(this).parents("tr").attr("id");
+    var id = $(this).parents("li").attr("id");
     hideJob(id, this);
   });
 });
@@ -39,12 +39,12 @@ function likeJob(id, button) {
 
 function addedToJobs(button) {
   var buttons = $(button).parent("div");
-  buttons.parent("td").append("<h5 class='added-job'>Added to My Jobs</h5>");
+  buttons.parent("div").append("<h5 class='added-job'>Added to My Jobs</h5>");
   buttons.remove();
 }
 
 function addedToHiddenJobs(button) {
-  $(button).parent("div").parent("td").parent("tr").remove();
+  $(button).parent("div").parent("div").parent("li").remove();
   $(".flash-container").show().addClass("alert-success")
     .text("Successfully Removed");
   setTimeout(function(){

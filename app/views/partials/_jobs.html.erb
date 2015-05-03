@@ -1,25 +1,15 @@
-<table class="jobs-table">
+<ul class="jobs-table">
   <% @jobs.each do |job| %>
-    <tr class="index-job" id="<%= job.id %>">
-      <td class="index-job-detail">
-        <h5><strong><%= link_to job.position, job_path(job) %></strong></h5>
-      </td>
-      <td class="index-job-detail">
-        <h5><%= job.company.name %></h5>
-      </td>
-      <td class="index-job-detail">
-        <h5><%= job.location %></h5>
-      </td>
-      <td class="index-job-detail">
-        <h5><%= job.posting_date.strftime("%m/%d") %></h5>
-      </td>
-      <% if current_user.jobs_liked.include?(job) %>
-        <td class="index-job-detail">
-          <h5 class="added-job">Added to My Jobs</h5>
-        </td>
-      <% else %>
-        <td class="index-job-detail">
-          <div class="btn-group btn-group-sm" role="group">
+    <li class="job-listing index-job search-item <%= job.tags.map { |tag| tag.name}.join(" ") %>" id="<%= job.id %>">
+      <div class="job-listing-text row">
+        <span class="position col-md-3"><strong><%= link_to job.position, job_path(job) %></strong></span>
+        <span class="company col-md-2"><%= job.company.name %></span>
+        <span class="location col-md-3"><%= job.location %></span>
+        <span class="date col-md-2"><%= job.posting_date.strftime("%m/%d") %></span>
+        <% if current_user.jobs_liked.include?(job) %>
+            <span class="added-job pull-right col-md-2">Added to My Jobs</span>
+        <% else %>
+          <div class="btn-group btn-group-sm pull-right col-md-2" role="group">
             <button id="like" class="btn btn-success">
               <i class="fa fa-star fa-lg"></i> Like
             </button>
@@ -27,8 +17,8 @@
               <i class="fa fa-trash-o fa-lg"></i> Remove
             </button>
           </div>
-        </td>
-      <% end %> 
-    <% end %>
-  </tr>
-</table>
+        <% end %>
+      </div>
+    </li>
+  <% end %>
+</ul>
