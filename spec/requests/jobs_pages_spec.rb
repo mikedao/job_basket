@@ -10,6 +10,7 @@ RSpec.describe "JobsPages", type: :request do
   describe "GET /jobs" do
     it "shows liked jobs" do
       job = create(:job)
+      @tags = create(:tag)
       @user.jobs_liked << job
 
       visit jobs_path
@@ -36,7 +37,7 @@ RSpec.describe "JobsPages", type: :request do
       visit job_path(job)
 
       expect(page).to have_content(job.position)
-      expect(page).to have_content(Date.today.strftime("%B %e, %Y"))
+      expect(page).to have_content(job.posting_date.strftime("%B %d, %Y"))
       expect(page).to have_content(job.description)
       expect(page).to have_content(job.location)
     end
