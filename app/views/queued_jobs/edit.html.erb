@@ -4,10 +4,10 @@
   <p><%="#{ @job.company.name}" %></p>
 </h3>
 <div class="edit-job-form">
-  <%= form_for(@job) do |f| %>
+  <%= form_for @job, url: queued_job_path do |f| %>
     <span class="edit-position">Position:<%= f.text_field :position %><br></span><br>
     <span class="edit-location"> Location: <%= f.text_field :location %><br></span><br>
     <span class="edit-description">Description: <%= f.text_area :description %><br></span>
-    <%= f.submit "Update Job", class: "btn btn-lg btn-warning" %>
+    <%= f.submit "Approve Job", class: "btn btn-lg btn-warning" %>
   <% end %>
   <div>
