@@ -14,7 +14,6 @@ RSpec.describe "MyjobsPages", type: :request do
       @user.jobs_liked << job
 
       visit my_jobs_path
-save_and_open_page
       expect(page).to have_content(job.position)
       expect(page).to have_content(job.location)
       expect(page).to have_content("Added to My Jobs")
