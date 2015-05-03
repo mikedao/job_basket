@@ -10,11 +10,13 @@ class QueuedJobsController < ApplicationController
 
   def update
     job = Job.find(params[:id])
-    job.update(
-      approved: true,
-      position: params[:job][:position],
-      description: params[:job][:description],
-      location: params[:job][:location])
+    job.update(queue_params)
     redirect_to queued_jobs_path
+  end
+
+  private
+
+  def queue_params
+    params.require(:job).permit(:position, :description, :location, :approved)
   end
 end

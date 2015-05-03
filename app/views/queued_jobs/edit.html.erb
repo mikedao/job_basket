@@ -8,6 +8,7 @@
     <span class="edit-position">Position:<%= f.text_field :position %><br></span><br>
     <span class="edit-location"> Location: <%= f.text_field :location %><br></span><br>
     <span class="edit-description">Description: <%= f.text_area :description %><br></span>
+    <%= f.hidden_field :approved, value: true %>
     <%= f.submit "Approve Job", class: "btn btn-lg btn-warning" %>
   <% end %>
   <div>
