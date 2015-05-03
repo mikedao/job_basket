@@ -1,6 +1,6 @@
 <ul class="jobs-table">
   <% @jobs.each do |job| %>
-    <li class="job-listing index-job search-item <%= @tags.sample.split(' ').join %>" id="<%= job.id %>">
+    <li class="job-listing index-job search-item <%= @tags.split(' ').join %>" id="<%= job.id %>">
       <div class="job-listing-text row">
         <span class="position col-md-3"><strong><%= link_to job.position, job_path(job) %></strong></span>
         <span class="company col-md-2"><%= job.company.name %></span>
