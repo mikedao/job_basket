@@ -28,5 +28,7 @@ $(document).ready(function() {
   }
 
   initializeSearchBar();
+  console.log("initializeSearchBar")
   initializeTags();
+  console.log("initializeTags")
 });
