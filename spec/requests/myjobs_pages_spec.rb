@@ -9,7 +9,7 @@ RSpec.describe "MyjobsPages", type: :request do
     end
 
     it "has only liked jobs" do
-      job = create(:job)
+      job = create(:job, approved: true)
       tag = create(:tag)
       job.tags << tag
       @user.jobs_liked << job

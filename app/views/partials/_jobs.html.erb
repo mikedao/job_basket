@@ -4,20 +4,9 @@
       <div class="job-listing-text row">
         <span class="position col-md-3"><strong><%= link_to job.position, job_path(job) %></strong></span>
         <span class="company col-md-2"><%= job.company.name %></span>
-        <span class="location col-md-3"><%= job.location %></span>
+        <span class="location col-md-2"><%= job.location %></span>
         <span class="date col-md-2"><%= job.posting_date.strftime("%m/%d") %></span>
-        <% if current_user.jobs_liked.include?(job) %>
-            <span class="added-job pull-right col-md-2">Added to My Jobs</span>
-        <% else %>
-          <div class="btn-group btn-group-sm pull-right col-md-2" role="group">
-            <button id="like" class="btn btn-success">
-              <i class="fa fa-star fa-lg"></i> Like
-            </button>
-            <button class="btn btn-danger">
-              <i class="fa fa-trash-o fa-lg"></i> Remove
-            </button>
-          </div>
-        <% end %>
+        <%= render partial: "/partials/#{partial}", locals: {job: job} %>
       </div>
     </li>
   <% end %>
