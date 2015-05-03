@@ -11,6 +11,5 @@ class JobsController < ApplicationController
   end
 
   def update
-
   end
 end
