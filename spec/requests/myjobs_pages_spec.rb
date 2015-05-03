@@ -10,10 +10,11 @@ RSpec.describe "MyjobsPages", type: :request do
 
     it "has only liked jobs" do
       job = create(:job)
+      tag = create(:tag)
+      job.tags << tag
       @user.jobs_liked << job
 
       visit my_jobs_path
-
       expect(page).to have_content(job.position)
       expect(page).to have_content(job.location)
       expect(page).to have_content("Added to My Jobs")
