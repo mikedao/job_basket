@@ -8,7 +8,7 @@ class Job < ActiveRecord::Base
 
   validates :position, :description, :source, presence: true
 
-  before_validation { |job| job.posting_date = Date.today if !job.posting_date }
+  before_validation { self.posting_date ||= Date.today }
 
   scope :by_newest, -> { order("posting_date DESC") }
   default_scope { by_newest }
