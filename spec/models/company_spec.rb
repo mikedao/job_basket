@@ -24,5 +24,14 @@ RSpec.describe Company, type: :model do
 
       expect(company.jobs.count).to eq(2)
     end
+
+    it "appends http to the url" do
+      company = create(:company, url: "www.google.com")
+      company2 = create(:company, url: nil)
+
+      expect(company.url).to start_with("http://")
+      expect(company.url).not_to start_with("www")
+      expect(company2.url).to be_nil
+    end
   end
 end
