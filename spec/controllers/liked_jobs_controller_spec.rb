@@ -13,18 +13,18 @@ RSpec.describe LikedJobsController, type: :controller do
 
       post :create, id: @job.id
 
-      expect(@user.jobsliked.first).to eq(@job)
+      expect(@user.jobs_liked.first).to eq(@job)
     end
   end
 
   describe "#delete" do
     it "unlikes a job" do
       @job = create(:job)
-      @user.jobsliked << @job
+      @user.jobs_liked << @job
 
       delete :destroy, id: @job.id
 
-      expect(@user.jobsliked.count).to eq(0)
+      expect(@user.jobs_liked.count).to eq(0)
       expect(Job.count).to eq(1)
     end
   end

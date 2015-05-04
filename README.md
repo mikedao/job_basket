@@ -5,12 +5,15 @@ Job Basket is a personalized job aggregator app. [Initial specs](https://github.
 1. `bundle`
 2. start postgres server
 3. `rake db:create db:migrate`
+4. `redis-server`
+5. `bundle exec sidekiq`
 
-#### Set up the scraper:
+#### Set up the [scraper](https://github.com/ndwhtlssthr/rubyscraper):
 1. `brew install phantomjs`
 2. Install the scraper gem: `gem install rubyscraper`
 3. `rails s`
-4. Run `rubyscraper http://localhost:3000/api/v1/jobs` to populate the jobs database.
+4. Run `rubyscraper -e http://localhost:3000/api/v1/jobs -f lib/rubyscraper` to populate the jobs database.
+5. For custom configuration, see the [scraper README](https://github.com/ndwhtlssthr/rubyscraper/blob/master/README.md)
 
 #### Set up the keys:
 1. `figaro install`

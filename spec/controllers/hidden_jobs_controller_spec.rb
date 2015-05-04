@@ -12,7 +12,7 @@ RSpec.describe HiddenJobsController, type: :controller do
       @job = create(:job)
       post :create, id: @job.id
 
-      expect(@user.jobshidden.first).to eq(@job)
+      expect(@user.jobs_hidden.first).to eq(@job)
     end
   end
 end
