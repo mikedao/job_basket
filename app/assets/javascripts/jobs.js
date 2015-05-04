@@ -10,7 +10,7 @@ $(document).ready(function() {
   });
 
   $(".unlike").click(function() {
-    var id = $(this).parents("tr").attr("id")
+    var id = $(this).parents("li").attr("id")
     unlikeJob(id, this);
   });
 });
