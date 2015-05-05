@@ -14,16 +14,14 @@ class Job < ActiveRecord::Base
   default_scope { by_newest }
 
   def self.visible_for(user)
-    not_hidden(user).not_liked(user)
+    _not_hidden(user)._not_liked(user)
   end
 
-  private
-
-  def self.not_hidden(user)
+  def self._not_hidden(user)
     where.not(id: user.jobs_hidden.pluck(:id))
   end
 
-  def self.not_liked(user)
+  def self._not_liked(user)
     where.not(id: user.jobs_liked.pluck(:id))
   end
 end
