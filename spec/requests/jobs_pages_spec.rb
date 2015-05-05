@@ -8,16 +8,14 @@ RSpec.describe "JobsPages", type: :request do
   end
 
   describe "GET /jobs" do
-    it "shows liked jobs" do
+    it "shows only unliked and unhidden jobs" do
       job = create(:job)
       @tags = create(:tag)
-      @user.jobs_liked << job
 
       visit jobs_path
 
       expect(page).to have_content(job.position)
       expect(page).to have_content(job.location)
-      expect(page).to have_content("Added to My Jobs")
     end
 
     it "doesn't show hidden jobs" do
@@ -27,6 +25,17 @@ RSpec.describe "JobsPages", type: :request do
       visit jobs_path
 
       expect(page).not_to have_content("Hiding job")
+    end
+
+    it "doesn't show liked jobs" do
+      job = create(:job)
+      @user.jobs_liked << job
+
+      visit jobs_path
+
+      expect(page).not_to have_content(job.position)
+      expect(page).not_to have_content(job.location)
+      expect(page).not_to have_content(job.company)
     end
   end
 
