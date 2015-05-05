@@ -17,7 +17,6 @@ RSpec.describe "MyjobsPages", type: :request do
       visit my_jobs_path
       expect(page).to have_content(job.position)
       expect(page).to have_content(job.location)
-      expect(page).to have_content("Added to My Jobs")
     end
 
     it "does not show hidden jobs" do

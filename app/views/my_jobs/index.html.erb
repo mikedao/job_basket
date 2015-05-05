@@ -3,8 +3,8 @@
 <%= render '/partials/sidebar' %>
 <div class="jobs">
   <% if @jobs.empty? %>
-    <div class="empty-jobs-message">You have reviewed all jobs. Check the queue for more!</div>
+    <div class="empty-jobs-message">You don't have any jobs yet. Go like some jobs!</div>
   <% else %>
-    <%= render partial: "/partials/jobs", locals: { partial: "jobs_buttons" } %>
+    <%= render partial: "/partials/jobs", locals: { partial: "unlike_jobs_buttons" } %>
   <% end %>
 </div>

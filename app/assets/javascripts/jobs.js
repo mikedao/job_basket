@@ -3,11 +3,31 @@ $(document).ready(function() {
     var id = $(this).parents("li").attr("id");
     likeJob(id, this);
   });
+
   $(".btn-danger").click(function() {
     var id = $(this).parents("li").attr("id");
     hideJob(id, this);
   });
+
+  $(".unlike").click(function() {
+    var id = $(this).parents("li").attr("id")
+    unlikeJob(id, this);
+  });
 });
+
+function unlikeJob(id, button) {
+  $.ajax({
+    method: "DELETE",
+    url: "/liked_jobs/" + id,
+    data: {id: id},
+    success: function() {
+      removedFromLikedJobs(button);
+    },
+    error: function() {
+      alert("Job could not be removed at this time");
+    }
+  });
+}
 
 function hideJob(id, button) {
   $.ajax({
@@ -37,16 +57,6 @@ function likeJob(id, button) {
   });
 }
 
-function addedToJobs(button) {
-  removeRow(button);
-  flashMessage("Added to My Jobs");
-}
-
-function addedToHiddenJobs(button) {
-  removeRow(button);
-  flashMessage("Successfully Removed");
-}
-
 function flashMessage(message) {
   $(".flash-container").show().addClass("alert-success")
   .text(message);
@@ -57,4 +67,25 @@ function flashMessage(message) {
 
 function removeRow(button) {
   $(button).parent("div").parent("div").parent("li").remove();
+}
+
+function addedToJobs(button) {
+  removeRow(button);
+  flashMessage("Added to My Jobs");
+}
+
+function addedToHiddenJobs(button) {
+  removeRow(button);
+  flashMessage("Successfully Removed");
+}
+
+function removedFromLikedJobs(button) {
+  //button.parentElement.parentElement.remove();
+  //$(".flash-container").show().addClass("alert-success")
+  //.text("Successfully Removed");
+  //setTimeout(function() {
+    //$(".flash-container").fadeOut();
+  //}, 1000);
+  removeRow(button);
+  flashMessage("Successfully Removed");
 }
