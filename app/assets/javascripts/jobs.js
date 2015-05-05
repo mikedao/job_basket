@@ -38,16 +38,23 @@ function likeJob(id, button) {
 }
 
 function addedToJobs(button) {
-  var buttons = $(button).parent("div");
-  buttons.parent("div").append("<h5 class='added-job'>Added to My Jobs</h5>");
-  buttons.remove();
+  removeRow(button);
+  flashMessage("Added to My Jobs");
 }
 
 function addedToHiddenJobs(button) {
-  $(button).parent("div").parent("div").parent("li").remove();
+  removeRow(button);
+  flashMessage("Successfully Removed");
+}
+
+function flashMessage(message) {
   $(".flash-container").show().addClass("alert-success")
-    .text("Successfully Removed");
+  .text(message);
   setTimeout(function(){
     $(".flash-container").fadeOut();
   }, 1000);
+}
+
+function removeRow(button) {
+  $(button).parent("div").parent("div").parent("li").remove();
 }

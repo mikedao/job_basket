@@ -2,5 +2,9 @@
 <div class="flash-container"></div>
 <%= render '/partials/sidebar' %>
 <div class="jobs">
-  <%= render partial: "/partials/jobs", locals: { partial: "jobs_buttons" } %>
+  <% if @jobs.empty? %>
+    <p class="empty-jobs-message">You don't have any Jobs yet. Visit "All Jobs" and like some jobs!</p>
+  <% else %>
+    <%= render partial: "/partials/jobs", locals: { partial: "jobs_buttons" } %>
+  <% end %>
 </div>

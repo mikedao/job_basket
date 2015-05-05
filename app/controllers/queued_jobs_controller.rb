@@ -1,4 +1,6 @@
 class QueuedJobsController < ApplicationController
+  before_action :authorize!
+
   def index
     @jobs = Job.where(approved: false)
     @tags = @jobs.flat_map { |job| job.tags.pluck(:name) }.uniq
