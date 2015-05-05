@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root "home#index"
   resources :jobs
-  resources :liked_jobs, only: [:create]
+  resources :liked_jobs, only: [:create, :destroy]
   resources :queued_jobs, only: [:index, :edit, :update]
   resources :hidden_jobs, only: [:create]
   resources :my_jobs, only: [:index]
