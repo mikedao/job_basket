@@ -80,12 +80,6 @@ function addedToHiddenJobs(button) {
 }
 
 function removedFromLikedJobs(button) {
-  //button.parentElement.parentElement.remove();
-  //$(".flash-container").show().addClass("alert-success")
-  //.text("Successfully Removed");
-  //setTimeout(function() {
-    //$(".flash-container").fadeOut();
-  //}, 1000);
   removeRow(button);
   flashMessage("Successfully Removed");
 }
