@@ -21,7 +21,7 @@ function unlikeJob(id, button) {
     url: "/liked_jobs/" + id,
     data: {id: id},
     success: function() {
-     removedFromLikedJobs(button);
+      removedFromLikedJobs(button);
     },
     error: function() {
       alert("Job could not be removed at this time");
@@ -57,26 +57,29 @@ function likeJob(id, button) {
   });
 }
 
-function addedToJobs(button) {
-  var buttons = $(button).parent("div");
-  buttons.parent("div").append("<h5 class='added-job'>Added to My Jobs</h5>");
-  buttons.remove();
-}
-
-function addedToHiddenJobs(button) {
-  $(button).parent("div").parent("div").parent("li").remove();
+function flashMessage(message) {
   $(".flash-container").show().addClass("alert-success")
-    .text("Successfully Removed");
+  .text(message);
   setTimeout(function(){
     $(".flash-container").fadeOut();
   }, 1000);
 }
 
+function removeRow(button) {
+  $(button).parent("div").parent("div").parent("li").remove();
+}
+
+function addedToJobs(button) {
+  removeRow(button);
+  flashMessage("Added to My Jobs");
+}
+
+function addedToHiddenJobs(button) {
+  removeRow(button);
+  flashMessage("Successfully Removed");
+}
+
 function removedFromLikedJobs(button) {
-  button.parentElement.parentElement.remove();
-  $(".flash-container").show().addClass("alert-success")
-    .text("Successfully Removed");
-    setTimeout(function() {
-      $(".flash-container").fadeOut();
-    }, 1000);
+  removeRow(button);
+  flashMessage("Successfully Removed");
 }
