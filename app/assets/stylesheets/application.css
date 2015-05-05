@@ -214,12 +214,19 @@ header {
   color: #05c2d1;
 }
 
+.queued-jobs-title {
+  float: right;
+  margin-right: 44%;
+  margin-bottom: -100px;
+  margin-top: 49px;
+}
+
 .queue-count {
   border-radius: 50%;
   float: right;
   width: 36px;
   height: 36px;
-  padding: 8px;
+  padding-top: 7px;
   margin-right: 40%;
   margin-bottom: -100px;
   margin-top: 40px;
